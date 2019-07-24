@@ -1,33 +1,113 @@
-@import './Variables.scss';
-@import './Mixins.scss';
-
 .header {
   @extend %padding--mobile;
   @extend %padding--tablet;
   @extend %padding--desktop;
 
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  flex-direction: column;
+
+  @media #{$Tablet} {
+    flex-direction: row;
+    height: 8.0rem;
+    align-items: center;
+  }
   
   &__logo-wrapper {
     padding: 12px 0;
+    display: flex;
+    justify-content: center;
+
+    @media #{$Tablet} {
+      padding: 0;
+    }
   }
 
+  // &__logo {
+  //   width: 120px;
+  //   height: 24px;
+  // }
 
   &__search {
+    @extend %paragraph-regular;
+
     background: url('../assets/Icons/SVG/Icon-search.svg'), $text-field-bg-fill;
     background-repeat: no-repeat;
     background-position-y: center;
-    background-position-x: 10%;
-    border: 1px solid $field-border; 
-    padding: 16px 30px;
+    background-position-x: 16px;
+    
+    color: $paragraph-text;
+    border: 1px solid $field-border;
+    height: 4.9rem; 
+    padding: 16px 40px;
     width: 100%;
+    margin-bottom: 0.8rem;
+
+
+    &::placeholder {
+      color: $paragraph-text;
+      opacity: 1;
+    }
+
+    &:focus {
+      border: 3px solid $primary-cta;
+    }
+
+    @media #{$Tablet} {
+      width: 240px;
+      margin-left: auto;
+      margin-bottom: 0;
+      height: 4.8rem; 
+
+      // max-width: 16.9rem;
+    }
   }
-  
+
+  &__flex-wrapper {
+    display: flex;
+    flex: 1;
+    margin-bottom: 1.6rem;
+
+    @media #{$Tablet} {
+      flex: 0;
+      margin-bottom: 0;
+      margin-left: 2.4rem;
+    }
+  }
+
+
   &__button {
     @extend %buttons;
-    flex:1;
+    flex: 1;
+    @include media-max-width(Mobile, 4, 3);
+
+    background: url('../assets/Icons/SVG/Icon-upload.svg'), $primary-cta;
+    background-repeat: no-repeat;
+    background-position-y: center;
+    // background-position-x: 16px;
+
+    &:hover {
+      background: url('../assets/Icons/SVG/Icon-upload.svg'), $primary-cta-hover;
+      background-repeat: no-repeat;
+      background-position-y: center;
+          // background-position-x: 16px;
+
+    }
+
+  //tablet 1
+  //desktop 1 +2
+
+     @media #{$Tablet} {
+       width: 10rem;
+      //  padding: 10px;
+      // @include media-max-width(Tablet, 1, 0);
+
+     }
+
+          @media #{$Desktop} {
+       max-width: 11.6rem;
+      // @include media-max-width(Tablet, 1, 2);
+
+     }
   }
 
   &__profile {
@@ -35,8 +115,9 @@
     width: 48px;
     border-radius: 50%;
     margin-left: 16px;
+
+     @media #{$Tablet} {
+       margin-left: 2.4rem;
+     }
   }
 }
-
-// $field-border: #E1E1E1; 
-// $text-field-bg-fill: #FAFAFA;

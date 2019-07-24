@@ -11,8 +11,10 @@ class Header extends React.Component {
       <header className='header'>
         <Logo />
         <Input class={'header__search'} type={'search'} placeholder={'Search'}/>
-        <Button class={'buttons header__button'} display={'Upload'}/>
-        <Profile class={'header__profile'} alt={'A picture of Mohan'}/>
+        <div className='header__flex-wrapper'>
+          <Button class={'buttons header__button'} display={'Upload'}/>
+          <Profile class={'header__profile'} alt={'A picture of Mohan'}/>
+        </div>
       </header>
     );
   }

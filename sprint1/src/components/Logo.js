@@ -5,7 +5,10 @@ class Logo extends React.Component {
   render() {
     return (
       <div className='header__logo-wrapper'>
-        <img src={logo} className="header__logo" alt="logo" />
+        <a href='./index.html'>
+          <img src={logo} className="header__logo" alt="logo" />
+        </a>
+        
       </div>
     );
   }
