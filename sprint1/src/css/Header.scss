@@ -1,0 +1,42 @@
+@import './Variables.scss';
+@import './Mixins.scss';
+
+.header {
+  @extend %padding--mobile;
+  @extend %padding--tablet;
+  @extend %padding--desktop;
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  
+  &__logo-wrapper {
+    padding: 12px 0;
+  }
+
+
+  &__search {
+    background: url('../assets/Icons/SVG/Icon-search.svg'), $text-field-bg-fill;
+    background-repeat: no-repeat;
+    background-position-y: center;
+    background-position-x: 10%;
+    border: 1px solid $field-border; 
+    padding: 16px 30px;
+    width: 100%;
+  }
+  
+  &__button {
+    @extend %buttons;
+    flex:1;
+  }
+
+  &__profile {
+    height: 48px;
+    width: 48px;
+    border-radius: 50%;
+    margin-left: 16px;
+  }
+}
+
+// $field-border: #E1E1E1; 
+// $text-field-bg-fill: #FAFAFA;
