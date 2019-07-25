@@ -2,13 +2,25 @@ import React from 'react';
 // import logo from './logo.svg';
 import './css/App.scss';
 import Header from './components/Header';
+import {sideVideo, mainVideo} from './data/Data'
 
 
 class App extends React.Component {
+
+  state = {
+    sideVideo,
+    mainVideo
+  }
+
+
   render() {
     return (
       <>
-        <Header/>
+        <Header 
+          poster={mainVideo.image}
+          duration={mainVideo.duration}
+        
+        />
       </>
     );
   }
