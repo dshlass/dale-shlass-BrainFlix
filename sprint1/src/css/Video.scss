@@ -1,0 +1,24 @@
+.video {
+
+  @extend %padding--tablet;
+  @extend %padding--desktop;
+
+
+
+
+  background: black;
+
+  &__media {
+    width: 100%;
+
+    @media #{$Tablet} {
+      padding: 0 1.0rem;
+    }
+
+    @media #{$Desktop} {
+      padding: 0 $column--desktop;
+    }
+  }
+
+
+}

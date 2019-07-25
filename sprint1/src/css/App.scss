@@ -1,10 +1,17 @@
 // //Normalizing the browser specific stylings
 @import './Normalize.scss';
 
-// //Imports my variables, mixins and classes that extended into other files
+// //Imports my variables
 @import './Variables.scss';
 
-//Imports the header specific styles
+//Imports the mixins and classes that extended into other files
 @import './Mixins.scss';
 
+//Imports the navigation specific styles
 @import './Navigation.scss';
+
+//Imports the navigation specific styles
+@import './Header.scss';
+
+//Imports the video specific styles
+@import './Video.scss'
