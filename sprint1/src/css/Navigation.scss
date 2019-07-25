@@ -1,4 +1,4 @@
-.header {
+.navigation {
   @extend %padding--mobile;
   @extend %padding--tablet;
   @extend %padding--desktop;
@@ -19,13 +19,14 @@
 
     @media #{$Tablet} {
       padding: 0;
+
     }
   }
 
-  // &__logo {
-  //   width: 120px;
-  //   height: 24px;
-  // }
+  &__logo {
+    width: 120px;
+    height: 24px;
+  }
 
   &__search {
     @extend %paragraph-regular;
@@ -38,8 +39,7 @@
     color: $paragraph-text;
     border: 1px solid $field-border;
     height: 4.9rem; 
-    padding: 16px 40px;
-    width: 100%;
+    padding: 16px 0 16px 40px;
     margin-bottom: 0.8rem;
 
 
@@ -53,12 +53,14 @@
     }
 
     @media #{$Tablet} {
-      width: 240px;
+      width: 190px;
       margin-left: auto;
       margin-bottom: 0;
       height: 4.8rem; 
+    }
 
-      // max-width: 16.9rem;
+    @media #{$Desktop} {
+      width: 252px;
     }
   }
 
@@ -83,13 +85,13 @@
     background: url('../assets/Icons/SVG/Icon-upload.svg'), $primary-cta;
     background-repeat: no-repeat;
     background-position-y: center;
-    // background-position-x: 16px;
+    background-position-x: 30%;
 
     &:hover {
       background: url('../assets/Icons/SVG/Icon-upload.svg'), $primary-cta-hover;
       background-repeat: no-repeat;
       background-position-y: center;
-          // background-position-x: 16px;
+      background-position-x: 30%;
 
     }
 
@@ -97,10 +99,17 @@
   //desktop 1 +2
 
      @media #{$Tablet} {
-       width: 10rem;
-      //  padding: 10px;
+       width: 11rem;
+      //  flex:1;
+       padding-left: 20%;
+       background-position-x: 15%;
       // @include media-max-width(Tablet, 1, 0);
+      
+      &:hover {
+       padding-left: 20%;
+       background-position-x: 15%;
 
+    }
      }
 
           @media #{$Desktop} {
