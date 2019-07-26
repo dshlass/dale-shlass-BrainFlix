@@ -35,6 +35,10 @@ class App extends React.Component {
           handleChange={this.handleChange}
           handleSubmit={this.handleSubmit}
           value={this.state.value}
+
+          currentVideo={mainVideo}
+          commentArray={mainVideo.comments} 
+          videoArray = {sideVideo}
         />
       </>
     );

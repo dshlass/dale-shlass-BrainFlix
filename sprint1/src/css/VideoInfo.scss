@@ -1,0 +1,37 @@
+.video {
+  &__title{
+    @extend %header-section;
+  }
+
+  &__channel{
+    @extend %header-sub;
+
+  }
+
+  &__timestamp{
+
+    @extend %paragraph-regular;
+    color: $text-label-fill;
+
+  }
+
+  &__views{
+        @extend %paragraph-regular;
+  }
+
+  &__likes{
+        @extend %paragraph-regular;
+  }
+
+  &__description{
+        @extend %paragraph-regular;
+
+  }
+
+  &__comment-count{
+        @extend %header-sub;
+
+  }
+
+}
+

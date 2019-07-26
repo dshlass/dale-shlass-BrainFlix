@@ -87,7 +87,7 @@
 //Font styles set for the Section sub headers
 //font-size and line height change based on the breakpoints
 %header-sub {
-  @include font-family(AvenirBold);
+  @include font-family(AvenirDemiBold);
   @include font-line(1.4rem, 2.2rem);
   @include media-font(550px, 2.4rem, 3.2rem);
 }

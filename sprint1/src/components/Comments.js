@@ -1,11 +1,11 @@
 import React from 'react';
 import Button from './Button';
+import PostedComment from './PostedComment';
 
 class Comments extends React.Component {
-
-  // state= {
-  //   value: ''
-  // }
+    
+    commentsArray = this.props.commentsArray;
+    
 
   render() {
     return (
@@ -20,26 +20,9 @@ class Comments extends React.Component {
         </form>
       </div>
       <div className="comments--posted">
-      
-        {/* I need to render this as an array of values passed down from App.js 
-        <div class='comments__posted-comment'>
-      <div class='comments__img'>
-        <img class='comments__img--small' src='https://www.fillmurray.com/54/54' alt='fillMurray'/>
-      </div>
-      <div class='content'>
-        <div class='content__flex'>
-          <p class="content__username"></p>
-          <p class="content__date"></p>
-        </div>
-        <div>
-          <p class='content__comment'></p>
-        </div>
-      </div>
-    </div> */}
-
-
-
-
+        {
+          this.commentsArray.map(comment => <PostedComment name={comment.name} date={comment.date} comment={comment.comment}/>)
+        }
       </div>
     </div> 
   </section>
