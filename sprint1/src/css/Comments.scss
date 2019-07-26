@@ -1,0 +1,173 @@
+  //Start of Comments component
+.section {
+
+  flex: 1;
+  @media #{$Desktop} {
+    @include media-max-width(Desktop, 8, 7);
+    margin-right: 2.4rem;
+  }
+
+}
+
+
+.comments {
+
+  @media #{$Tablet} {
+    // @include media-max-width(Tablet, 4, 5);
+
+  }
+
+  @media #{$Desktop} {
+    @include media-max-width(Desktop, 8, 7);
+  }
+
+  &__flex {
+    @extend %bottom-divider;
+    padding-bottom: 3.2rem; //Change to be responsive just to show divier
+    display: flex;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+
+    flex: 1;
+  }
+
+  &__title {
+    @extend %header-section;
+    padding-bottom: 4.0rem;
+    color: $paragraph-text;
+  }
+
+//Start of img styles
+  &__img {
+
+    &--small {
+      width: 36px;
+      border-radius: 50%;
+      margin-right: 10px;
+    }
+
+    &--large{
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      margin-top: 2.4rem;
+      margin-right: 1.6rem;
+    }
+
+    &--posted {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      margin-right: 10px;
+    }
+  } //End of img styles
+
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+
+    @media #{$Tablet} {
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+  }
+  &__label {
+    @extend %paragraph-bold;
+    color: $text-label-fill;
+    text-transform: uppercase;
+
+        @media #{$Tablet} {
+          // flex:1;
+          width: 100%;
+    }
+  }
+
+  //Start of Input styles
+  &__input {
+    @extend %paragraph-regular;
+    color: $paragraph-text;
+    background: $text-field-bg-fill;
+    padding: 8px;
+    border: 1px solid $text-label-fill;
+    border-radius: 4px;
+    margin-bottom: 1.6rem;
+    height: 48px;
+
+    @media #{$Tablet} {
+      flex:1;
+    }
+
+    &::placeholder {
+      color: $paragraph-text;
+      opacity: 1;
+    }
+
+    &:focus {
+      border: 3px solid $primary-cta;;
+    }
+
+    &--comment {
+      resize: vertical;
+    }
+  }
+
+  &__submit {
+    @extend %buttons;
+
+    @media #{$Tablet} {
+      margin-right: 40px;
+      margin-left: 16px;
+      width: 160px;    
+    }
+
+  } //End of Input styles
+
+  //Dynamically generated element by JS
+  &__posted-comment {
+    @extend %bottom-divider;
+    display: flex;
+    padding: 2.4rem 0;
+  }
+}  //End of Comments component
+
+
+//Dynamically generated elements by JS
+//Start of Content component
+.content {
+    display:flex;
+    flex-direction: column;
+
+  &__flex {
+    display: flex;
+    @extend %paragraph-regular; 
+  }
+
+  &__username {
+    @extend %paragraph-bold;
+    font-weight: 600;
+    margin-bottom: 1.6rem;
+    margin-right: 1.6rem;
+    color: $paragraph-text;
+  }
+
+  &__date {
+    @extend %paragraph-regular;
+    margin-left: auto;
+    color: $text-label-fill;
+
+    @media #{$Tablet} {
+      margin-left: 0;
+    }
+  }
+
+  &__comment {
+    @extend %paragraph-regular;
+    color: $paragraph-text;
+
+  }
+} //End of Content component
+

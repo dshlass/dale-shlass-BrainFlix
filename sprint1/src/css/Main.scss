@@ -1,0 +1,12 @@
+.main {
+  @extend %padding--mobile;
+  @extend %padding--tablet;
+  @extend %padding--desktop;
+
+  display:flex;
+  flex-direction: column;
+
+  @media #{$Desktop} {
+    flex-direction: row;
+  }
+}

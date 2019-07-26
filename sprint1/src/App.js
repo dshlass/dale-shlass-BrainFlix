@@ -2,7 +2,8 @@ import React from 'react';
 // import logo from './logo.svg';
 import './css/App.scss';
 import Header from './components/Header';
-import {sideVideo, mainVideo} from './data/Data'
+import {sideVideo, mainVideo} from './data/Data';
+import Main from './components/Main';
 
 
 class App extends React.Component {
@@ -19,8 +20,8 @@ class App extends React.Component {
         <Header 
           poster={mainVideo.image}
           duration={mainVideo.duration}
-        
         />
+        <Main />
       </>
     );
   }

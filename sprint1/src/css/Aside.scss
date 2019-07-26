@@ -1,0 +1,36 @@
+.next-video {
+  display: flex;
+
+  @media #{$Desktop} {
+    flex:1;
+
+    @include media-max-width(Desktop, 4, 3);
+  }
+
+  &__image {
+    width: 12rem;
+    height: 7rem;
+    margin-right: 1.6rem;
+    // overflow: hidden;
+  }
+
+
+  &__info-wrapper {
+
+  }
+
+  &__title {
+
+  }
+
+  &__channel {
+
+  }
+
+}
+
+.test {
+  max-width:100%;
+  max-height:100%;
+  object-fit: cover;
+}
