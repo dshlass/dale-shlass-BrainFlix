@@ -10,7 +10,17 @@ class App extends React.Component {
 
   state = {
     sideVideo,
-    mainVideo
+    mainVideo,
+    value: ''
+  }
+
+  handleChange= (event) =>{
+    this.setState({value: event.target.value});
+  }
+
+  handleSubmit= (event) => {
+    alert('You have submitted a comment: ' + this.state.value);
+    event.preventDefault();
   }
 
 
@@ -21,7 +31,11 @@ class App extends React.Component {
           poster={mainVideo.image}
           duration={mainVideo.duration}
         />
-        <Main />
+        <Main 
+          handleChange={this.handleChange}
+          handleSubmit={this.handleSubmit}
+          value={this.state.value}
+        />
       </>
     );
   }

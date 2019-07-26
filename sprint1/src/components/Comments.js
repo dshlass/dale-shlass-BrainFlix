@@ -3,18 +3,9 @@ import Button from './Button';
 
 class Comments extends React.Component {
 
-  state= {
-    value: ''
-  }
-
-  handleChange= (event) =>{
-    this.setState({value: event.target.value});
-  }
-
-  handleSubmit= (event) => {
-    alert('An essay was submitted: ' + this.state.value);
-    event.preventDefault();
-  }
+  // state= {
+  //   value: ''
+  // }
 
   render() {
     return (
@@ -22,9 +13,9 @@ class Comments extends React.Component {
       <div className="comments">
       <div className="comments__flex">
         <img className="comments__img--large" src={require("../assets/Images/Mohan-muruge.jpg")} alt=""/>
-        <form className="comments__form" onSubmit={this.handleSubmit}>
+        <form className="comments__form" onSubmit={this.props.handleSubmit}>
           <label className='comments__label' htmlFor="comment">Join the Conversation</label>
-          <textarea name="comment" className='comments__input comments__input--comment' placeholder="Write comment here" value={this.state.value}  onChange={this.handleChange}></textarea>
+          <textarea name="comment" className='comments__input comments__input--comment' placeholder="Write comment here" value={this.props.value} onChange={this.props.handleChange}></textarea>
           <Button class={'button comments__submit'} display={"Comment"}/>
         </form>
       </div>

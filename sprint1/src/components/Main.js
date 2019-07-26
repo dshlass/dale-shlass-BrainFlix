@@ -6,7 +6,11 @@ class Main extends React.Component {
   render() {
     return (
       <main className='main'>
-        <Comments />
+        <Comments 
+          handleSubmit={this.props.handleSubmit}
+          handleChange={this.props.handleChange}
+          value={this.props.value}
+        />
         <Aside />
       </main>
     );
