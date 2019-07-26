@@ -9,7 +9,7 @@ class Main extends React.Component {
   render() {
     return (
       <main className='main'>
-        <section>
+        <section className='section'>
         <VideoInfo currentVideo={this.props.currentVideo}/>
         <Comments 
           handleSubmit={this.props.handleSubmit}

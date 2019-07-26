@@ -1,4 +1,7 @@
 import React from 'react';
+import likes from '../assets/Icons/SVG/Icon-likes.svg';
+import views from '../assets/Icons/SVG/Icon-views.svg';
+
 
 class VideoInfo extends React.Component {
 
@@ -9,10 +12,18 @@ class VideoInfo extends React.Component {
     return (
       <>
         <h1 className='video__title'>{video.title}</h1>
-        <h2 className='video__channel'>By {video.channel}</h2>
-        <p className='video__timestamp'>{video.timestamp}</p>
-        <p className='video__views'>{video.views}</p>
-        <p className='video__likes'>{video.likes}</p>
+        <div className='video__info-wrapper'>
+          <div className='video__channel-time'>
+            <h2 className='video__channel'>By {video.channel}</h2>
+            <p className='video__timestamp'>{video.timestamp}</p>
+          </div>
+          <div className='video__like-view'>
+            <img className='video__logo' src={views} alt='video views'/>
+            <p className='video__views'>{video.views}</p>
+            <img className='video__logo' src={likes} alt='video likes'/>
+            <p className='video__likes'>{video.likes}</p>
+          </div>
+        </div>
         <p className='video__description'>{video.description}</p>
         <p className='video__comment-count'>{video.comments.length} Comments</p>
 

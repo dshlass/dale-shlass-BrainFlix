@@ -1,13 +1,12 @@
   //Start of Comments component
-.section {
+// .section {
 
-  flex: 1;
-  @media #{$Desktop} {
-    @include media-max-width(Desktop, 8, 7);
-    margin-right: 2.4rem;
-  }
+//   flex: 1;
+//   @media #{$Desktop} {
+//     @include media-max-width(Desktop, 8, 7);
+//   }
 
-}
+// }
 
 
 .comments {
@@ -23,7 +22,7 @@
 
   &__flex {
     @extend %bottom-divider;
-    padding-bottom: 3.2rem; //Change to be responsive just to show divier
+    padding-bottom: 0.8rem; //Change to be responsive just to show divier
     display: flex;
   }
 

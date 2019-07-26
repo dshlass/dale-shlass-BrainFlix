@@ -23,8 +23,16 @@ class App extends React.Component {
     event.preventDefault();
   }
 
+  
+
 
   render() {
+
+    let sideVideoToDisplay = sideVideo.filter(videos => 
+        
+       {return (mainVideo.title !== videos.title && mainVideo.channel !== videos.channel)}
+      );
+
     return (
       <>
         <Header 
@@ -38,7 +46,7 @@ class App extends React.Component {
 
           currentVideo={mainVideo}
           commentArray={mainVideo.comments} 
-          videoArray = {sideVideo}
+          videoArray = {sideVideoToDisplay}
         />
       </>
     );

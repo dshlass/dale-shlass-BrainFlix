@@ -1,5 +1,5 @@
 import React from 'react';
-import SideVideo from './SideVideo';
+import NextVideo from './NextVideo';
 
 class Aside extends React.Component {
     
@@ -10,8 +10,9 @@ class Aside extends React.Component {
 
     return (
       <section className='side-video'>
+        <p className='side-video__title'>Next Video</p>
         {
-          this.props.videoArray.map(video => <SideVideo title={video.title} channel={video.channel} image={video.image} />)
+          this.props.videoArray.map(video => <NextVideo key={video.id + video.title} title={video.title} channel={video.channel} image={video.image} />)
         }
       </section>
     );

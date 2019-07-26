@@ -1,0 +1,33 @@
+
+.next-video {
+  display: flex;
+  &__image-wrapper {
+    flex:1 0 120px;
+    max-width: 12rem;
+    height: 7rem;
+    margin-right: 1.6rem;
+    overflow: hidden;
+    margin-bottom: 2.4rem;
+  }
+
+&__image {
+  width:100%;
+  height:100%;
+  object-fit: fill;
+}
+
+  &__info-wrapper {
+  }
+
+  &__title {
+    @extend %paragraph-regular;
+    // font-family: AvenirDemiBold;
+    font-weight: bold;
+  }
+
+  &__channel {
+    @extend %paragraph-regular;
+
+  }
+
+}

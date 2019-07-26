@@ -9,7 +9,7 @@ class Comments extends React.Component {
 
   render() {
     return (
-    <section className="section section--comments"> 
+    <section className="section--comments"> 
       <div className="comments">
       <div className="comments__flex">
         <img className="comments__img--large" src={require("../assets/Images/Mohan-muruge.jpg")} alt=""/>
@@ -21,7 +21,7 @@ class Comments extends React.Component {
       </div>
       <div className="comments--posted">
         {
-          this.commentsArray.map(comment => <PostedComment name={comment.name} date={comment.date} comment={comment.comment}/>)
+          this.commentsArray.map(comment => <PostedComment key={comment.id + comment.name} name={comment.name} date={comment.date} comment={comment.comment}/>)
         }
       </div>
     </div> 
