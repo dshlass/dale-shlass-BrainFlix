@@ -6,10 +6,9 @@
     @include media-max-width(Desktop, 4, 3);
 
   &__title {
-    @extend %paragraph-bold;
+    @extend %paragraph-label;
     color: $text-label-fill;
     text-transform: uppercase;
     margin: 4rem 0;
   }
-
 }

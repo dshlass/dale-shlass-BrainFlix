@@ -1,29 +1,21 @@
-  //Start of Comments component
-// .section {
-
-//   flex: 1;
-//   @media #{$Desktop} {
-//     @include media-max-width(Desktop, 8, 7);
-//   }
-
-// }
-
+.section--comments {
+  flex: 1;
+  
+    @media #{$Desktop} {
+      width: 71.2rem;
+    }
+  } 
 
 .comments {
 
-  @media #{$Tablet} {
-    // @include media-max-width(Tablet, 4, 5);
-
-  }
-
-  @media #{$Desktop} {
-    @include media-max-width(Desktop, 8, 7);
-  }
-
   &__flex {
     @extend %bottom-divider;
-    padding-bottom: 0.8rem; //Change to be responsive just to show divier
+    padding-bottom: 2.4rem;
     display: flex;
+    
+    @media #{$Tablet} {
+      padding-bottom: 0.8rem;
+    }
   }
 
   &__form {
@@ -52,7 +44,7 @@
       width: 48px;
       height: 48px;
       border-radius: 50%;
-      margin-top: 2.4rem;
+      margin-top: 1.9rem;
       margin-right: 1.6rem;
     }
 
@@ -74,14 +66,14 @@
       flex-wrap: wrap;
     }
   }
+
   &__label {
-    @extend %paragraph-bold;
+    @extend %paragraph-label;
     color: $text-label-fill;
     text-transform: uppercase;
 
-        @media #{$Tablet} {
-          // flex:1;
-          width: 100%;
+    @media #{$Tablet} {
+      width: 100%;
     }
   }
 
@@ -125,7 +117,7 @@
 
   } //End of Input styles
 
-  //Dynamically generated element by JS
+  //Dynamically generated element by React
   &__posted-comment {
     @extend %bottom-divider;
     display: flex;
@@ -134,7 +126,7 @@
 }  //End of Comments component
 
 
-//Dynamically generated elements by JS
+//Dynamically generated elements by React
 //Start of Content component
 .content {
     display:flex;
@@ -146,8 +138,7 @@
   }
 
   &__username {
-    @extend %paragraph-bold;
-    font-weight: 600;
+    @extend %header-sub;
     margin-bottom: 1.6rem;
     margin-right: 1.6rem;
     color: $paragraph-text;
@@ -166,6 +157,10 @@
   &__comment {
     @extend %paragraph-regular;
     color: $paragraph-text;
+
+    @media #{$Tablet} {
+      max-width: 62.4rem;
+    }
 
   }
 } //End of Content component

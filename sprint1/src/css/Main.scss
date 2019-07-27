@@ -11,19 +11,14 @@
   }
 }
 
-
 .section{
-      margin-right: 2.4rem;
-      
-      @media #{$Desktop} {
-        border-right: 1px solid $field-border;
-      }
+  @media #{$Desktop}{
+    margin-right: 2.4rem;
 
-&--comments {
-
-  flex: 1;
-  @media #{$Desktop} {
-    @include media-max-width(Desktop, 8, 7);
   }
+
+  @media #{$Desktop} {
+    border-right: 1px solid $field-border;
+    padding-bottom: 2.4rem;
   }
 }

@@ -2,8 +2,6 @@ import React from 'react';
 import Navigation from './Navigation';
 import Video from './Video';
 
-
-
 class Header extends React.Component {
   render() {
     return (

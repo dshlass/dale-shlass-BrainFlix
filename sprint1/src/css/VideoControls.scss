@@ -19,12 +19,11 @@
   }
 
   &__play {
-    width: 40px;
+    width: 48px;
     background: url('../assets/Icons/SVG/Icon-play.svg'), rgba(0,0,0,0.4);
     background-repeat: no-repeat;
+    background-position: center;
     border-radius: 4px;
-        background-position: center;
-
   }
 
 
@@ -34,7 +33,7 @@
     background: rgba(0,0,0,0.4);
     border-radius: 4px;
     padding: 8px 16px;
-    height: 40px;
+    height: 32px;
 
     @media #{$Tablet} {
       margin-left: 16px;
@@ -44,8 +43,8 @@
   &__fullscreen {
     background: url('../assets/Icons/SVG/Icon-fullscreen.svg'), rgba(0,0,0,0);
     background-position: center;
-    width: 100%;
     background-repeat: no-repeat;
+    width: 100%;
   }
 
   &__volume {

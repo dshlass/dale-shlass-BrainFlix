@@ -10,20 +10,23 @@
 //Imports the navigation specific styles
 @import './Navigation.scss';
 
-//Imports the navigation specific styles
-@import './Header.scss';
-
 //Imports the video specific styles
 @import './Video.scss';
 
+//Imports the video controls specific styles
 @import './VideoControls.scss';
 
+//Imports the main specific styles
 @import './Main.scss';
 
+//Imports the video controls specific styles
 @import './VideoInfo.scss';
 
+//Imports the video comments specific styles
 @import './Comments.scss';
 
-@import './NextVideo.scss';
-
+//Imports the aside section video specific styles
 @import './Aside.scss';
+
+//Imports the next video specific styles
+@import './NextVideo.scss';

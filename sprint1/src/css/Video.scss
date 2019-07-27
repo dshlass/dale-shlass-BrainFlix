@@ -1,27 +1,21 @@
 .video {
-
   @extend %padding--tablet;
   @extend %padding--desktop;
   position: relative;
-
-
-
   background: black;
 
   &__media {
-
     object-fit: cover;
+    min-height: 18.3rem;
+
     @media #{$Tablet} {
       padding: 0 1.0rem;
+      min-height: 40rem;
     }
 
     @media #{$Desktop} {
       padding: 0 $column--desktop;
+      min-height: 54rem;
     }
-
-
-
   }
-
-
 }

@@ -1,13 +1,17 @@
 
 .next-video {
   display: flex;
+
+    margin-bottom: 2.4rem;
+
+
   &__image-wrapper {
     flex:1 0 120px;
     max-width: 12rem;
     height: 7rem;
     margin-right: 1.6rem;
     overflow: hidden;
-    margin-bottom: 2.4rem;
+    border-radius: 4px;
   }
 
 &__image {
@@ -17,17 +21,23 @@
 }
 
   &__info-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  &__title-container {
+    overflow-y: hidden;
+    max-height: 4rem;
   }
 
   &__title {
-    @extend %paragraph-regular;
-    // font-family: AvenirDemiBold;
-    font-weight: bold;
+    @extend %header-sub;
+    text-overflow: ellipsis;
   }
 
   &__channel {
     @extend %paragraph-regular;
-
   }
 
 }

@@ -89,7 +89,7 @@
 %header-sub {
   @include font-family(AvenirDemiBold);
   @include font-line(1.4rem, 2.2rem);
-  @include media-font(550px, 2.4rem, 3.2rem);
+  // @include media-font(550px, 1.7rem, 2.2rem);
 }
 
 //Font styles set for the general paragraph texts
@@ -102,9 +102,9 @@
 
 //Font styles set for the bold paragraph text items
 //font-size and line height change based on the breakpoints
-%paragraph-bold {
+%paragraph-label {
   @include font-family(AvenirDemiBold);
-  @include font-line(1.6rem, 2.4rem);
+  @include font-line(1.2rem, 2.0rem);
 }
 
 //Setting up the padding on mobile to scale with the page as it increases to Tablet

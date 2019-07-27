@@ -1,6 +1,5 @@
 .video {
-  &__title{
-
+  &__title {
     @extend %header-section;
     margin-top: 3.2rem;
     margin-bottom: 1.6rem;
@@ -8,21 +7,14 @@
     @media #{$Tablet} {
       margin-top: 4.8rem;
       margin-bottom: 2.4rem;
-
     }
-
-    // @media #{$Desktop} {
-      
-    // }
-
   }
 
   &__info-wrapper {
     display: flex;
     flex-direction: column;
     border-bottom: 1px solid $field-border;
-        margin-bottom: 2.4rem;
-
+    margin-bottom: 2.4rem;
 
     @media #{$Tablet} {
       flex-direction: row;
@@ -36,21 +28,23 @@
     margin-bottom: 3.2rem;
     
     @media #{$Tablet} {
-        margin-bottom: 2.4rem;
+      margin-bottom: 2.4rem;
     }
   }
 
-  &__channel{
-    @extend %paragraph-bold;
-    // flex: 1;
+  &__channel {
+    @extend %paragraph-label;
     margin-right: 0.8rem;
 
+    @media #{$Tablet} {
+      font-size: 1.7rem;
+      line-height:2.2rem;
+    }
   }
 
-  &__timestamp{
+  &__timestamp {
     @extend %paragraph-regular;
     color: $text-label-fill;
-    // flex: 1;
     margin-right: auto;
   }
 
@@ -59,29 +53,35 @@
     align-items: center;
     margin-bottom: 2.4rem;
 
-
-
+    @media #{$Desktop} {
+      margin-right: 3.2rem;
+    }
   }
 
   &__logo {
-    width: 20px;
+    width: 2rem;
     margin-right: 0.8rem;
+    align-self: flex-start;
+
+    @media #{$Tablet} {
+      align-self: auto;  
+    }
   }
 
-  &__views{
-        @extend %paragraph-regular;
-        margin-right: 2.4rem;
+  &__views {
+    @extend %paragraph-regular;
+    margin-right: 3.2rem;
   }
 
-  &__likes{
-        @extend %paragraph-regular;
+  &__likes {
+    @extend %paragraph-regular;
   }
 
-  &__description{
+  &__description {
     @extend %paragraph-regular;
 
     @media #{$Tablet} {
-      max-width: 456px;
+      max-width: 45.6rem;
     }
 
     @media #{$Tablet} {
@@ -89,11 +89,16 @@
     }
   }
 
-  &__comment-count{
-    @extend %paragraph-bold;
-    margin-top: 40px;
-    margin-bottom: 32px;
-  }
+  &__comment-count {
+    @extend %paragraph-label;
+    margin-top: 4rem;
+    margin-bottom: 3.2rem;
 
+    @media #{$Tablet} {
+      font-size: 1.7rem;
+      line-height:2.2rem;
+      margin-top: 6rem;
+    }
+  }
 }
 
