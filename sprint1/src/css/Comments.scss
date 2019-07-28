@@ -1,11 +1,13 @@
+//Comment section speicific styling
 .section--comments {
   flex: 1;
   
-    @media #{$Desktop} {
-      width: 71.2rem;
-    }
-  } 
+  @media #{$Desktop} {
+    width: 71.2rem;
+  }
+} 
 
+//Comment component speicific styling
 .comments {
 
   &__flex {
@@ -21,7 +23,6 @@
   &__form {
     display: flex;
     flex-direction: column;
-
     flex: 1;
   }
 
@@ -55,7 +56,6 @@
       margin-right: 10px;
     }
   } //End of img styles
-
 
   &__form {
     display: flex;

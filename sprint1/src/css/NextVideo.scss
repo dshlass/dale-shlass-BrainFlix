@@ -1,9 +1,7 @@
-
+//NextVideo component specific styles
 .next-video {
   display: flex;
-
-    margin-bottom: 2.4rem;
-
+  margin-bottom: 2.4rem;
 
   &__image-wrapper {
     flex:1 0 120px;
@@ -14,11 +12,11 @@
     border-radius: 4px;
   }
 
-&__image {
-  width:100%;
-  height:100%;
-  object-fit: fill;
-}
+  &__image {
+    width:100%;
+    height:100%;
+    object-fit: fill;
+  }
 
   &__info-wrapper {
     display: flex;

@@ -1,3 +1,4 @@
+//Styles from the main component
 .main {
   @extend %padding--mobile;
   @extend %padding--tablet;
@@ -11,13 +12,9 @@
   }
 }
 
-.section{
-  @media #{$Desktop}{
-    margin-right: 2.4rem;
-
-  }
-
+.section {
   @media #{$Desktop} {
+    margin-right: 2.4rem;
     border-right: 1px solid $field-border;
     padding-bottom: 2.4rem;
   }

@@ -1,3 +1,4 @@
+//VideoControls component specific styling
 .controls {
   position: absolute;
   bottom: 8px;
@@ -25,7 +26,6 @@
     background-position: center;
     border-radius: 4px;
   }
-
 
   &__screen-vol {
     display: flex;
@@ -85,11 +85,6 @@
         display: block;
         margin-left: 16px;
       }
-    }
-
-    @media #{$Desktop} {
-      // flex: 0 1 auto;
-      // width: 751px;
     }
   }
 }

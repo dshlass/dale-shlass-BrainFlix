@@ -1,7 +1,7 @@
 import React from 'react';
-import logo from '../assets/Logo/Logo-brainflix.svg'
-import Button from './Button';
-import Profile from './Profile'
+import logo from '../../../assets/Logo/Logo-brainflix.svg';
+import Button from '../../Reusable/Button';
+import Profile from '../../Reusable/Profile';
 
 
 class Navigation extends React.Component {

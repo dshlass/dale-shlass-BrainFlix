@@ -1,7 +1,7 @@
 import React from 'react';
-import Button from './Button';
+import Button from '../../Reusable/Button';
 import PostedComment from './PostedComment';
-import Profile from './Profile';
+import Profile from '../../Reusable/Profile';
 
 class Comments extends React.Component {
     

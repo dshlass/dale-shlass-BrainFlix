@@ -1,3 +1,4 @@
+//Navigation component styling
 .navigation {
   @extend %padding--mobile;
   @extend %padding--tablet;
@@ -19,7 +20,6 @@
 
     @media #{$Tablet} {
       padding: 0;
-
     }
   }
 
@@ -28,6 +28,7 @@
     height: 24px;
   }
 
+  //Start of search bar styling
   &__search {
     @extend %paragraph-regular;
 
@@ -42,7 +43,6 @@
     padding: 16px 0 16px 40px;
     margin-bottom: 0.8rem;
     border-radius: 4px;
-
 
     &::placeholder {
       color: $paragraph-text;
@@ -63,7 +63,7 @@
     @media #{$Desktop} {
       width: 252px;
     }
-  }
+  } //End of search bar styling
 
   &__flex-wrapper {
     display: flex;
@@ -77,8 +77,8 @@
     }
   }
 
-
-  &__button {
+  //Start of button stylings
+  &__button { 
     @extend %buttons;
     flex: 1;
     @include media-max-width(Mobile, 4, 3);
@@ -93,32 +93,23 @@
       background-repeat: no-repeat;
       background-position-y: center;
       background-position-x: 30%;
-
     }
 
-  //tablet 1
-  //desktop 1 +2
+    @media #{$Tablet} {
+      width: 11rem;
+      padding-left: 20%;
+      background-position-x: 15%;
 
-     @media #{$Tablet} {
-       width: 11rem;
-      //  flex:1;
-       padding-left: 20%;
-       background-position-x: 15%;
-      // @include media-max-width(Tablet, 1, 0);
-      
       &:hover {
-       padding-left: 20%;
-       background-position-x: 15%;
-
+        padding-left: 20%;
+        background-position-x: 15%;
+      }
     }
-     }
 
-          @media #{$Desktop} {
-       max-width: 11.6rem;
-      // @include media-max-width(Tablet, 1, 2);
-
-     }
-  }
+    @media #{$Desktop} {
+      max-width: 11.6rem;
+    }
+  }  //End of button stylings
 
   &__profile {
     height: 48px;
@@ -126,8 +117,8 @@
     border-radius: 50%;
     margin-left: 16px;
 
-     @media #{$Tablet} {
-       margin-left: 2.4rem;
-     }
+    @media #{$Tablet} {
+      margin-left: 2.4rem;
+    }
   }
 }

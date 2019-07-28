@@ -1,6 +1,6 @@
 import React from 'react';
-import likes from '../assets/Icons/SVG/Icon-likes.svg';
-import views from '../assets/Icons/SVG/Icon-views.svg';
+import likes from '../../../assets/Icons/SVG/Icon-likes.svg';
+import views from '../../../assets/Icons/SVG/Icon-views.svg';
 
 class VideoInfo extends React.Component {
 
