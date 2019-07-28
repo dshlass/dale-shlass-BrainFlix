@@ -25,6 +25,13 @@
     background-repeat: no-repeat;
     background-position: center;
     border-radius: 4px;
+
+    &:active {
+      background:url('../assets/Icons/SVG/Icon-play.svg'), rgba(45, 171, 255, 0.7);
+      background-repeat: no-repeat;
+      background-position: center;
+      border-radius: 4px;
+    }
   }
 
   &__screen-vol {
@@ -32,7 +39,6 @@
     margin-left: 8px;
     background: rgba(0,0,0,0.4);
     border-radius: 4px;
-    padding: 8px 16px;
     height: 32px;
 
     @media #{$Tablet} {
@@ -45,13 +51,30 @@
     background-position: center;
     background-repeat: no-repeat;
     width: 100%;
+    padding: 8px 16px 8px 24px;
+    border-radius: 4px;
+
+    &:active {
+      background: url('../assets/Icons/SVG/Icon-fullscreen.svg'), rgba(45, 171, 255, 0.7);
+      background-position: center;
+      background-repeat: no-repeat;
+      border-radius: 4px 0 0 4px;
+    }
   }
 
   &__volume {
-    margin-left: 16px;
     background: url('../assets/Icons/SVG/Icon-volume.svg'), rgba(0,0,0,0);
     background-repeat: no-repeat;
     background-position: center;
+    padding: 8px 24px 8px 16px;
+    border-radius: 4px;
+
+    &:active {
+      background: url('../assets/Icons/SVG/Icon-volume.svg'), rgba(45, 171, 255, 0.7);
+      background-position: center;
+      background-repeat: no-repeat;
+      border-radius: 0 4px 4px 0;
+    }
   }
 
   &__progress {

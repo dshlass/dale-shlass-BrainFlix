@@ -115,6 +115,11 @@
       width: 160px;    
     }
 
+    &:active,
+    &:hover {
+      background: $primary-cta-hover;
+    }
+
   } //End of Input styles
 
   //Dynamically generated element by React

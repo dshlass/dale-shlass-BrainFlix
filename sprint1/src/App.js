@@ -35,15 +35,20 @@ class App extends React.Component {
   handleSubmit= (event) => {
     event.preventDefault();
 
-    mainVideo.comments.unshift(
-      {
-        name: 'Mohan Muruge',
-        comment: this.state.value,
-        date: new Date()
-      }
-    )
+    if (this.state.value === '') {
+      alert('You must submit a comment');
+    } else {
+      
+      mainVideo.comments.unshift(
+        {
+          name: 'Mohan Muruge',
+          comment: this.state.value,
+          date: new Date()
+        }
+      )
 
-    this.setState(this.state)
+      this.setState(this.state)
+    }
   }
 
   render() {

@@ -96,12 +96,13 @@
     }
 
     @media #{$Tablet} {
-      width: 11rem;
-      padding-left: 20%;
+      width: 12rem;
+      padding-left: 15%;
       background-position-x: 15%;
 
+      &:active,
       &:hover {
-        padding-left: 20%;
+        padding-left: 15%;
         background-position-x: 15%;
       }
     }
