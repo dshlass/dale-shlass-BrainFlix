@@ -14,15 +14,36 @@ class App extends React.Component {
     value: ''
   }
 
+  //Sorts by date and falls back to index if the dates are the same. 
+  sortFunction(input) {
+    input.sort((a,b) => {
+        if (a.date === b.date) {
+          return (input.indexOf(a) - input.indexOf(b))
+        } else {
+          return (b.date-a.date)
+        }
+      }
+    )
+  }
+
   //Updates the value state when you type in the text area
   handleChange= (event) => {
     this.setState({value: event.target.value});
   }
 
-  //displays the state value as an alert when you submit a comment
+  //displays a new post when submitted
   handleSubmit= (event) => {
     event.preventDefault();
-    alert('You have submitted a comment: ' + this.state.value);
+
+    mainVideo.comments.unshift(
+      {
+        name: 'Mohan Muruge',
+        comment: this.state.value,
+        date: new Date()
+      }
+    )
+
+    this.setState(this.state)
   }
 
   render() {
@@ -31,6 +52,10 @@ class App extends React.Component {
     let sideVideoToDisplay = sideVideo.filter(videos => 
       {return (mainVideo.title !== videos.title && mainVideo.channel !== videos.channel)}
     );
+
+    //Passes down the sorted array as a prop to Comments.js
+    let sortedComments = mainVideo.comments;
+    this.sortFunction(sortedComments);
 
     return (
       <>
@@ -52,7 +77,7 @@ class App extends React.Component {
           value={this.state.value}
 
           currentVideo={mainVideo}
-          commentArray={mainVideo.comments} 
+          commentArray={sortedComments} 
           
           videoArray = {sideVideoToDisplay}
         />

@@ -72,17 +72,17 @@ const mainVideo = {
       {
         name: "Michael Lyons",
         comment: "They BLEW the ROOF off at their last show, once everyone started figuring out they were going. This is still simply the greatest opening of a concert I have EVERY witnessed",
-        date:"12/18/2018"
+        date: new Date(2018, 11, 18)
       },
       {
         name: "Gary Wong",
         comment: "Every time I see him shred I feel so motivated to get off my couch and hop on my board. He's so talented! I wish I can ride like him one day so I can really enjoy myself!",
-        date:"12/12/2018"
+        date: new Date(2018, 11, 12)
       },
       {
         name: "Theodore Duncan",
         comment: "How can someone be so good!!!! You can tell he lives for this and loves to do it everyday. Everytime I see him I feel insantly happy! He's definitely my favorite ever!",
-        date:"11/15/2018"
+        date: new Date(2018, 10, 15)
       }
     ] 
 };
