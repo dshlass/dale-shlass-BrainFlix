@@ -4,15 +4,6 @@ import Header from './components/Header';
 import {sideVideo, mainVideo} from './data/Data';
 import Main from './components/Main';
 
-/**
- * import React from 'react';
-import './css/Master.scss';
-import Header from './components/Header';
-import {sideVideo, mainVideo} from './data/Data';
-import Main from './components/Main';
-
- */
-
 
 class App extends React.Component {
 

@@ -8,25 +8,25 @@
 @import './Mixins.scss';
 
 //Imports the navigation specific styles
-@import './Navigation.scss';
+@import '../components/Header/Navigation/Navigation.scss';
 
 //Imports the video specific styles
-@import './Video.scss';
+@import '../components/Header/Video/Video.scss';
 
 //Imports the video controls specific styles
-@import './VideoControls.scss';
+@import '../components/Header/Video/VideoControls/VideoControls.scss';
 
 //Imports the main specific styles
-@import './Main.scss';
+@import '../components/Main/Main.scss';
 
 //Imports the video controls specific styles
-@import './VideoInfo.scss';
+@import '../components/Main/VideoInfo/VideoInfo.scss';
 
 //Imports the video comments specific styles
-@import './Comments.scss';
+@import '../components/Main/Comments/Comments.scss';
 
 //Imports the aside section video specific styles
-@import './Aside.scss';
+@import '../components/Main/Aside/Aside.scss';
 
 //Imports the next video specific styles
-@import './NextVideo.scss';
+@import '../components/Main/Aside/NextVideo/NextVideo.scss';
