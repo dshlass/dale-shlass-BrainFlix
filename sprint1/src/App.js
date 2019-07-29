@@ -46,9 +46,10 @@ class App extends React.Component {
           date: new Date()
         }
       )
-
       this.setState(this.state)
     }
+    //Clears the textarea after submit is clicked
+    this.setState({value: ''})
   }
 
   render() {
