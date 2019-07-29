@@ -1,0 +1,175 @@
+.upload {
+  @extend %padding--mobile;
+  @extend %padding--tablet;
+  @extend %padding--desktop;
+
+  &__header {
+    @extend %header-section;
+
+    margin-top: 2.4rem;
+    padding-bottom: 3.2rem;
+
+    @media #{$Tablet} {
+      margin-top: 4.8rem;
+      margin-bottom: 4rem;
+
+      border-bottom: 1px solid $field-border;
+
+    }
+  }
+
+  //Start of the wrapper element
+  &__wrapper {
+
+    &--flex {
+      display: flex;
+      flex-direction: column;
+
+      @media #{$Desktop} {
+        flex-direction: row;
+      }
+    }
+
+    &--image {
+      max-width: 34.4rem;
+      margin-bottom: 3.2rem;
+       
+       @media #{$Tablet} {
+        margin-bottom: 4rem;
+      }
+
+      @media #{$Desktop} {
+        margin-right: 2.4rem;
+      }
+
+    }
+
+    &--input {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    &--button {
+      display: flex;
+      flex-direction: column-reverse;
+
+      @media #{$Tablet} {
+        margin-left: auto;
+        flex-direction: row;
+        margin-top: 4rem;
+      }
+    }
+  }
+    //End of the wrapper element
+
+  &__image {
+    border-radius: 5px;
+  }
+
+  &__label {
+    @extend %paragraph-label;
+    color: $text-label-fill;
+    text-transform: uppercase;
+
+    @media #{$Tablet} {
+      width: 100%;
+    }
+  }
+
+  &__input {
+    @extend %paragraph-regular;
+    color: $paragraph-text;
+    background: $text-field-bg-fill;
+    padding: 8px;
+    border: 1px solid $text-label-fill;
+    border-radius: 4px;
+    margin-bottom: 2.4rem;
+    height: 48px;
+
+    @media #{$Tablet} {
+      flex:1 0 auto;
+    }
+
+    &::placeholder {
+      color: $paragraph-text;
+      opacity: 1;
+    }
+
+    &:focus {
+      border: 3px solid $primary-cta;;
+    }
+ 
+  }
+
+  &__textarea {
+    @extend %paragraph-regular;
+    color: $paragraph-text;
+    background: $text-field-bg-fill;
+    padding: 8px;
+    border: 1px solid $text-label-fill;
+    border-radius: 4px;
+    margin-bottom: 3.2rem;
+    min-height: 143px;
+    resize: vertical;
+
+    @media #{$Tablet} {
+      flex:1;
+      margin-bottom: 4rem;
+    }
+
+    @media #{$Desktop} {
+      min-height: 9.4rem;
+    }
+
+    &::placeholder {
+      color: $paragraph-text;
+      opacity: 1;
+    }
+
+    &:focus {
+      border: 3px solid $primary-cta;;
+    }
+
+    }
+
+
+  &__cancel {
+    @extend %buttons;
+    color: $primary-cta;
+    background: white;
+    margin-bottom: 2.4rem;
+
+
+    @media #{$Tablet} {
+      width: 16rem; 
+      margin-bottom: 0;
+   
+    }
+
+    &:active,
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &__publish {
+    @extend %buttons;
+    margin-bottom: 2.4rem;
+
+    @media #{$Tablet} {
+      margin-bottom: 0;
+      margin-left: 4.8rem;
+      width: 16rem;    
+    }
+
+    &:active,
+    &:hover {
+      background: $primary-cta-hover;
+    }
+  }
+
+
+
+
+}

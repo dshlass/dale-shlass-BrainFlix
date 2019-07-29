@@ -1,0 +1,14 @@
+//Aside specific styling
+.side-video {
+  @include media-max-width(Desktop, 4, 3);
+  display: flex;
+  flex-direction: column;
+  flex:1;
+
+  &__title {
+    @extend %paragraph-label;
+    color: $text-label-fill;
+    text-transform: uppercase;
+    margin: 4rem 0;
+  }
+}

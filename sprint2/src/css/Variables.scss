@@ -1,0 +1,37 @@
+// Global Variables
+$paragraph-text: #323232;
+$text-label-fill: #AFAFAF;
+$field-border: #E1E1E1; 
+$text-field-bg-fill: #FAFAFA;
+
+$nav-bg-fill: #323232; 
+$primary-cta: #0095FF ;
+$primary-cta-hover: #0065AD;
+
+$Tablet: 'only screen and (min-width: 550px)';
+$Desktop: 'only screen and (min-width: 1200px)';
+
+//Setting up the grids
+$gutter: 2.4rem;
+$column--mobile: 5.4rem;
+$column--tablet: 10rem;
+$column--desktop: 6.8rem;
+
+//Importing fonts
+@font-face {
+    font-family: "AvenirBold";
+    src: url("../assets/fonts/AvenirNextProLT/Linotype\ -\ AvenirNextLTPro-Bold.otf") format('opentype'),
+         url("../assets/fonts/AvenirNextProLT/Alternative\ files/Linotype - Avenir Next LT Pro Bold.ttf") format('truetype')
+}
+
+@font-face {
+    font-family: "AvenirDemiBold";
+    src: url("../assets/fonts/AvenirNextProLT/Linotype\ -\ AvenirNextLTPro-Demi.otf") format('opentype'),
+         url("../assets/fonts/AvenirNextProLT/Alternative\ files/Linotype - Avenir Next LT Pro Demi.ttf") format('truetype');
+}
+
+@font-face {
+    font-family: "AvenirRegular";
+    src: url("../assets/fonts/AvenirNextProLT/Linotype\ -\ AvenirNextLTPro-Regular.otf") format('opentype'),
+         url("../assets/fonts/AvenirNextProLT/Alternative\ files/Linotype - Avenir Next LT Pro.ttf") format('truetype');
+}

@@ -1,0 +1,163 @@
+@import './Variables.scss';
+
+//Declares the font-family as well as the fallbacks
+@mixin font-family($font-style) {
+  @if $font-style == AvenirBold {
+    font-weight: 600;
+  }
+  @if $font-style == AvenirDemiBold {
+    font-weight: 500;
+  }
+  @if $font-style == AvenirRegular {
+    font-weight: 400;
+  }
+  font-family: $font-style, Helvetica, sans-serif;
+}
+
+//Sets font-size and line-height
+@mixin font-line($fs, $lh) {
+  font-size: $fs;
+  line-height: $lh;
+}
+
+//Sets font-size and line-height at specific breakpoints
+@mixin media-font($breakpoint, $fs, $lh) {
+  @media only screen and (min-width: $breakpoint) {
+    @include font-line($fs, $lh);
+  }
+}
+
+//Sets the max width of an element based on the number of columns and gutters. Work with all breakpoints
+@mixin media-max-width($breakpoint, $num-column, $num-gutter) {
+  @if $breakpoint == Mobile {
+      max-width: $num-column * $column--mobile + $num-gutter * $gutter;
+  }
+  @if $breakpoint == Tablet {
+    max-width: $num-column * $column--tablet + $num-gutter * $gutter;
+  }
+  @if $breakpoint == Desktop {
+    max-width: $num-column * $column--desktop + $num-gutter * $gutter;
+  }
+}
+
+//Sets the bottom padding on the top and bottom of a seciton. Linearly interpolates the Tablet padding.
+@mixin media-bottom-padding($mobile-padding, $desktop-padding) {
+  padding-bottom: $mobile-padding;
+
+  @media only screen and (min-width: 550px) {
+    padding-bottom: ($mobile-padding + (($desktop-padding - $mobile-padding)/2));
+  }
+
+  @media only screen and (min-width: 1200px) {
+    padding-bottom: $desktop-padding;
+  }
+}
+
+//Sets the top padding on the top and bottom of a seciton. Linearly interpolates the Tablet padding.
+@mixin media-top-padding($mobile-padding, $desktop-padding) {
+  padding-top: $mobile-padding;
+
+  @media only screen and (min-width: 550px) {
+    padding-top: ($mobile-padding + (($desktop-padding - $mobile-padding)/2));
+  }
+
+  @media only screen and (min-width: 1200px) {
+    padding-top: $desktop-padding;
+  }
+}
+
+//Placeholders only used for extending
+
+//Font styles set for the Hero header
+//font-size and line height change based on the breakpoints
+%header-hero {
+  @include font-family(AvenirBold);
+  @include font-line(2.4rem, 3.2rem);
+  @include media-font(550px, 6.0rem, 6.8rem);
+}
+
+//Font styles set for the Section headers
+//font-size and line height change based on the breakpoints
+%header-section {
+  @include font-family(AvenirBold);
+  @include font-line(2.4rem, 3.2rem);
+  @include media-font(550px, 3.6rem, 4.4rem);
+}
+
+//Font styles set for the Section sub headers
+//font-size and line height change based on the breakpoints
+%header-sub {
+  @include font-family(AvenirDemiBold);
+  @include font-line(1.4rem, 2.2rem);
+  // @include media-font(550px, 1.7rem, 2.2rem);
+}
+
+//Font styles set for the general paragraph texts
+//font-size and line height change based on the breakpoints
+%paragraph-regular {
+  @include font-family(AvenirRegular);
+  @include font-line(1.3rem, 1.8rem);
+  @include media-font(550px, 1.4rem, 2.2rem);
+}
+
+//Font styles set for the bold paragraph text items
+//font-size and line height change based on the breakpoints
+%paragraph-label {
+  @include font-family(AvenirDemiBold);
+  @include font-line(1.2rem, 1.6rem);
+}
+
+//Setting up the padding on mobile to scale with the page as it increases to Tablet
+%padding--mobile {
+  padding-left: percentage(1.6rem / 32rem);
+  padding-right: percentage(1.6rem / 32rem);
+}
+
+//Setting up the padding on Tablet to scale with the page as it increases to Desktop
+%padding--tablet {
+  @media #{$Tablet} {
+    padding-left: percentage(2.4rem / 76.8rem);
+    padding-right: percentage(2.4rem / 76.8rem);
+  }
+}
+
+//Setting up the padding on Desktop to scale with the page as it increases to Large Desktops
+%padding--desktop {
+  @media #{$Desktop} {
+    padding-left: percentage(18rem / 144.0rem);
+    padding-right: percentage(18rem / 144.0rem);
+  }
+}
+
+//Margin wrapper used as a utility in place of Padding if required.
+%margin--wrapper{
+  margin-left: percentage(1.6rem / 32rem);
+  margin-right: percentage(1.6rem / 32rem);
+  
+  @media #{$Tablet} {
+    margin-left: percentage(2.4rem / 76.8rem);
+    margin-right: percentage(2.4rem / 76.8rem);
+  }
+  
+  @media #{$Desktop} {
+    margin-left: percentage(18rem / 144.0rem);
+    margin-right: percentage(18rem / 144.0rem);
+  }
+}
+
+//Specific boilerplate styles for the buttons
+%buttons {
+  @extend %paragraph-regular;
+  @include font-family(AvenirDemiBold);
+  color: white;
+  text-transform: uppercase;
+  border-radius: 4px;
+  background: $primary-cta;
+  height: 4.8rem;
+}
+
+%bottom-divider {
+  border-bottom: 1px solid $field-border;
+}
+
+

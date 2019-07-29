@@ -1,0 +1,105 @@
+//VideoInfo specific stylings
+.video-info {
+  &__title {
+    @extend %header-section;
+    margin-top: 3.2rem;
+    margin-bottom: 1.6rem;
+
+    @media #{$Tablet} {
+      margin-top: 4.8rem;
+      margin-bottom: 2.4rem;
+    }
+  }
+
+  &__info-wrapper {
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid $field-border;
+    margin-bottom: 2.4rem;
+
+    @media #{$Tablet} {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+
+  &__channel-time {
+    display: flex;
+    align-items: center;
+    margin-bottom: 3.2rem;
+    
+    @media #{$Tablet} {
+      margin-bottom: 2.4rem;
+    }
+  }
+
+  &__channel {
+    @extend %paragraph-label;
+    margin-right: 0.8rem;
+
+    @media #{$Tablet} {
+      font-size: 1.7rem;
+      line-height:2.2rem;
+    }
+  }
+
+  &__timestamp {
+    @extend %paragraph-regular;
+    color: $text-label-fill;
+    margin-right: auto;
+  }
+
+  &__like-view {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2.4rem;
+
+    @media #{$Desktop} {
+      margin-right: 3.2rem;
+    }
+  }
+
+  &__logo {
+    width: 2rem;
+    margin-right: 0.8rem;
+    align-self: flex-start;
+
+    @media #{$Tablet} {
+      align-self: auto;  
+    }
+  }
+
+  &__views {
+    @extend %paragraph-regular;
+    margin-right: 3.2rem;
+  }
+
+  &__likes {
+    @extend %paragraph-regular;
+  }
+
+  &__description {
+    @extend %paragraph-regular;
+
+    @media #{$Tablet} {
+      max-width: 45.6rem;
+    }
+
+    @media #{$Tablet} {
+      @include media-max-width(Desktop, 6, 5);
+    }
+  }
+
+  &__comment-count {
+    @extend %paragraph-label;
+    margin-top: 4rem;
+    margin-bottom: 3.2rem;
+
+    @media #{$Tablet} {
+      font-size: 1.7rem;
+      line-height:2.2rem;
+      margin-top: 6rem;
+    }
+  }
+}
+

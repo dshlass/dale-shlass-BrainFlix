@@ -1,0 +1,34 @@
+//Normalizing the browser specific stylings
+@import './Normalize.scss';
+
+//Imports my variables
+@import './Variables.scss';
+
+//Imports the mixins and classes that extended into other files
+@import './Mixins.scss';
+
+//Imports the navigation specific styles
+@import '../components/Header/Navigation/Navigation.scss';
+
+//Imports the video specific styles
+@import '../components/Header/Video/Video.scss';
+
+//Imports the video controls specific styles
+@import '../components/Header/Video/VideoControls/VideoControls.scss';
+
+//Imports the main specific styles
+@import '../components/Main/Main.scss';
+
+//Imports the video controls specific styles
+@import '../components/Main/VideoInfo/VideoInfo.scss';
+
+//Imports the video comments specific styles
+@import '../components/Main/Comments/Comments.scss';
+
+//Imports the aside section video specific styles
+@import '../components/Main/Aside/Aside.scss';
+
+//Imports the next video specific styles
+@import '../components/Main/Aside/NextVideo/NextVideo.scss';
+
+@import '../components/Upload/Upload.scss';
