@@ -1,8 +1,11 @@
 import React from 'react';
 import './css/Master.scss';
 import Header from './components/Header';
-import {sideVideo, mainVideo} from './data/Data';
+import {mainVideo, sideVideo} from './data/Data';
 import Main from './components/Main';
+// import axios from 'axios';
+import testArray from './data/Api'
+
 
 
 class App extends React.Component {
@@ -11,8 +14,10 @@ class App extends React.Component {
   state = {
     sideVideo,
     mainVideo,
-    value: ''
+    value: '',
+    sideArray: []
   }
+
 
   //Sorts by date and falls back to index if the dates are the same. 
   sortFunction(input) {
@@ -35,34 +40,41 @@ class App extends React.Component {
   handleSubmit= (event) => {
     event.preventDefault();
 
-    if (this.state.value === '') {
-      alert('You must submit a comment');
-    } else {
+    // if (this.state.value === '') {
+    //   alert('You must submit a comment');
+    // } else {
       
-      mainVideo.comments.unshift(
-        {
-          name: 'Mohan Muruge',
-          comment: this.state.value,
-          date: new Date()
-        }
-      )
-      this.setState(this.state)
-    }
+    //   mainVideo.comments.unshift(
+    //     {
+    //       name: 'Mohan Muruge',
+    //       comment: this.state.value,
+    //       date: new Date()
+    //     }
+    //   )
+    //   this.setState(this.state)
+    // }
     //Clears the textarea after submit is clicked
     this.setState({value: ''})
   }
 
-  render() {
+  componentDidMount() {
+    if (sideVideo === []) {
+      this.setState({sideArray: testArray});
+    }
+  }
 
+
+  render() {
+    this.componentDidMount();
     //Filters out the current video from the next video list that appears on the side
-    let sideVideoToDisplay = sideVideo.filter(videos => 
+    let sideVideoToDisplay = testArray.filter(videos => 
       {return (mainVideo.title !== videos.title && mainVideo.channel !== videos.channel)}
     );
 
     //Passes down the sorted array as a prop to Comments.js
     let sortedComments = mainVideo.comments;
     this.sortFunction(sortedComments);
-
+    console.log(this.state)
     return (
       <>
         {/**Current video information passed to the header */}

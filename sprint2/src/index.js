@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import App from './App';
+// import Api from './data/Api'
 import Upload from './components/Upload'
 import * as serviceWorker from './serviceWorker';
 

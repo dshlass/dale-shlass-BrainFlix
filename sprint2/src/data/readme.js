@@ -104,34 +104,34 @@
  * 
  * 
  * 
- * 
- * 
- * 
- *  POST `/videos/:id/comments`
- * 
- * body: {
-	"name": "Nigel",
-	"comment": "This is a test"
-}
- * returned 
- {
-  "name": "Nigel",
-  "comment": "This is a test",
-  "id": 4,
-  "timestamp": 1531857374673
-}
- *  
- * 
- * 
- * DELETE `/videos/:videoId/comments/:commentId`
- * 
- * 
- * {
-    "name": "Ian",
-    "comment": "You could make $5000 a day too!",
-    "id": 1,
-    "timestamp": 1530744338878
-}
+//  * 
+//  * 
+//  * 
+//  *  POST `/videos/:id/comments`
+//  * 
+//  * body: {
+// 	"name": "Nigel",
+// 	"comment": "This is a test"
+// }
+//  * returned 
+//  {
+//   "name": "Nigel",
+//   "comment": "This is a test",
+//   "id": 4,
+//   "timestamp": 1531857374673
+// }
+//  *  
+//  * 
+//  * 
+//  * DELETE `/videos/:videoId/comments/:commentId`
+//  * 
+//  * 
+//  * {
+//     "name": "Ian",
+//     "comment": "You could make $5000 a day too!",
+//     "id": 1,
+//     "timestamp": 1530744338878
+// }
  * 
  * 
  * 
