@@ -1,21 +1,18 @@
 import React from 'react';
 import './css/Master.scss';
 import Header from './components/Header';
-import {mainVideo, sideVideo} from './data/Data';
+// import {mainVideo} from './data/Data';
 import Main from './components/Main';
-// import axios from 'axios';
-import testArray from './data/Api'
-
+import axios from 'axios';
 
 
 class App extends React.Component {
 
   //Importing sideVideo and mainVideo to the state to be passed down the tree to components
   state = {
-    sideVideo,
-    mainVideo,
     value: '',
-    sideArray: []
+    isLoaded: false,
+    targetId: '1af0jruup5gu'
   }
 
 
@@ -57,15 +54,64 @@ class App extends React.Component {
     this.setState({value: ''})
   }
 
-  componentDidMount() {
-    if (sideVideo === []) {
-      this.setState({sideArray: testArray});
-    }
+
+
+  // shouldComponentUpdate(props, nextState) {
+  //      return (nextState !== this.state.isLoaded)     
+        
+  // }
+
+  getVideos() {
+    Promise.all([
+            axios.get(this.urlHandler('videos')),
+            axios.get(this.urlHandler('videos/'+ this.state.targetId)) 
+            ])
+            .then(
+              result => { 
+                // console.log(result[1].data)
+                // console.log(result[0].data)
+                this.setState({
+                  isLoaded: true,
+                  testArray: result[0].data,
+                  mainVideo: result[1].data
+                })
+              }
+            )
+            .catch(error => {
+              console.log(error)
+          this.setState({
+          isLoaded: true,
+          error
+          })
+        })
   }
 
+  urlHandler = (endpoint) =>{
+    const apiKey = 'a74bc77e-a64a-4c16-94a1-ba5cb480ac2e';
+    return `https://project-2-api.herokuapp.com/${endpoint}?api_key=${apiKey}`
+  }
+
+  componentDidMount() {
+    this.getVideos();
+  }
+
+  handleVideoSelection = (event) => {
+    this.setState({targetId: event.currentTarget.id, isLoaded:false});
+    this.getVideos();
+  }
 
   render() {
-    this.componentDidMount();
+    
+    const { error, isLoaded, testArray, mainVideo } = this.state;
+    
+    if (error) {
+      return <div>Error: {error.message}</div>;
+    } else if (!isLoaded) {
+      return <div>Loading...</div>;
+    } else {
+
+
+    // this.componentDidMount()
     //Filters out the current video from the next video list that appears on the side
     let sideVideoToDisplay = testArray.filter(videos => 
       {return (mainVideo.title !== videos.title && mainVideo.channel !== videos.channel)}
@@ -97,10 +143,12 @@ class App extends React.Component {
           currentVideo={mainVideo}
           commentArray={sortedComments} 
           
+          handleVideoSelection = {this.handleVideoSelection}
           videoArray = {sideVideoToDisplay}
         />
       </>
     );
+  }
   }
 }
 

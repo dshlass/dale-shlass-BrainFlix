@@ -7,6 +7,9 @@ import Aside from './Aside';
 class Main extends React.Component {
 
   render() {
+
+    const { currentVideo, handleChange, handleSubmit, value, commentArray, videoArray, handleVideoSelection } = this.props
+
     return (
       <main className='main'>
         <section className='section'> {/**This section contains the current video's info and the generated comments */}
@@ -17,7 +20,7 @@ class Main extends React.Component {
           * Passing down data from App.js to generate the current video information
           */
         }
-        <VideoInfo currentVideo={this.props.currentVideo}/>
+        <VideoInfo currentVideo={currentVideo}/>
         
         {
           /** 
@@ -29,10 +32,10 @@ class Main extends React.Component {
           */
         }
         <Comments 
-          handleSubmit={this.props.handleSubmit}
-          handleChange={this.props.handleChange}
-          value={this.props.value}
-          commentsArray={this.props.commentArray} 
+          handleSubmit={handleSubmit}
+          handleChange={handleChange}
+          value={value}
+          commentsArray={commentArray} 
         />
 
         {
@@ -42,7 +45,10 @@ class Main extends React.Component {
           */
         }
         </section>
-          <Aside videoArray={this.props.videoArray}/>
+          <Aside 
+            videoArray={videoArray} 
+            handleVideoSelection={handleVideoSelection}
+          />
       </main>
     );
   }

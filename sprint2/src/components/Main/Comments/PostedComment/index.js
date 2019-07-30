@@ -14,7 +14,7 @@ class PostedComment extends React.Component {
     let currentMonth = pageDate.getMonth() + 1;
 
     //Setting variables for posted date-time
-    let postedDate = date;
+    let postedDate = new Date(date);
     let postedYear = postedDate.getFullYear();
     let postedMonth = postedDate.getMonth() + 1;
 

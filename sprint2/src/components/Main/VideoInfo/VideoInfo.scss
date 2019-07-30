@@ -2,6 +2,7 @@
 .video-info {
   &__title {
     @extend %header-section;
+    @include media-max-width(Desktop, 7, 6);
     margin-top: 3.2rem;
     margin-bottom: 1.6rem;
 
