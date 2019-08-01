@@ -1,18 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
-import App from './App';
-// import Api from './data/Api'
+import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+// import App from './App';
 import Upload from './components/Upload'
+import Test from './Router'
 import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(<Router>
-    <Switch>
-      <Route path='/' exact component={App}/>
-      <Route path='/upload' component={Upload}/>
-      <Route path='/videos/:id' exact component={App}/>
-    </Switch>
+ReactDOM.render(
+<Router>
+      <Switch>
+            {/* <Route path='/videos/:id' render={(props) => <App match={props.match}/>}/>
+            <Route path='/upload' component={Upload}/> */}
+            <Route path='/upload'  component={Upload}/>
+            <Route path='/:id'  render={(props) => <Test match={props.match}/>}/>
+            <Route path='/' exact component={Test}/>
+
+      </Switch>
+
 </Router>, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change

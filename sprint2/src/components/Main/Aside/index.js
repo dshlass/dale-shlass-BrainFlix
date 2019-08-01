@@ -14,7 +14,7 @@ class Aside extends React.Component {
     // this.getRequest();
 
     //Desrtucturing the received props.
-    const {videoArray, handleVideoSelection} = this.props;
+    const {videoArray, match, getVideos} = this.props;
     // console.log(videoArray)
 
     return (
@@ -28,7 +28,8 @@ class Aside extends React.Component {
                 channel={video.channel} 
                 image={video.image} 
                 id={video.id} 
-                handleVideoSelection={handleVideoSelection}
+                match={match}
+                getVideos={getVideos}
               />
             )       
         }

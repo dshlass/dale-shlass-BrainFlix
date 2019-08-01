@@ -8,7 +8,7 @@ class Main extends React.Component {
 
   render() {
 
-    const { currentVideo, handleChange, handleSubmit, value, commentArray, videoArray, handleVideoSelection } = this.props
+    const { currentVideo, handleChange, handleSubmit, value, commentArray, videoArray, match, getVideos } = this.props
 
     return (
       <main className='main'>
@@ -47,7 +47,8 @@ class Main extends React.Component {
         </section>
           <Aside 
             videoArray={videoArray} 
-            handleVideoSelection={handleVideoSelection}
+            match={match}
+            getVideos={getVideos}
           />
       </main>
     );

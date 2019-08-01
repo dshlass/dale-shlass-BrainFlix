@@ -6,9 +6,10 @@ class NextVideo extends React.Component {
   //Generated inside Aside using the next video array that was filtered in App.js to exclude the current video
   render() {
 
-    const {id, image, title, channel, handleVideoSelection} = this.props
+    const {id, image, title, channel} = this.props
+    // console.log(match);
     return (
-        <Link className='next-video' to={'/videos/' + id} onClick={(event)=> handleVideoSelection(event)} id={id}>
+        <Link className='next-video' to={'/' +id} id={id}>
           <div className='next-video__image-wrapper'> {/**Start of video image wrapper */}
             <img src={image} className='next-video__image'  alt='Thumbnail of the video'/>
           </div> {/**End of video image wrapper */}

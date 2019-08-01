@@ -7,7 +7,7 @@ class Header extends React.Component {
   render() {
     return (
       <header className='header'>
-        <Navigation />
+        <Navigation getVideos={this.props.getVideos}/>
         <Video 
           poster={this.props.poster}
           duration={this.props.duration}

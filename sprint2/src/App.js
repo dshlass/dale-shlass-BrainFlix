@@ -1,9 +1,10 @@
 import React from 'react';
 import './css/Master.scss';
 import Header from './components/Header';
-// import {mainVideo} from './data/Data';
+// import {Switch, Route} from './data/Data';
 import Main from './components/Main';
-import axios from 'axios';
+// import {Switch, Route} from 'react-router-dom'
+
 
 
 class App extends React.Component {
@@ -12,20 +13,9 @@ class App extends React.Component {
   state = {
     value: '',
     isLoaded: false,
-    targetId: '1af0jruup5gu'
-  }
-
-
-  //Sorts by date and falls back to index if the dates are the same. 
-  sortFunction(input) {
-    input.sort((a,b) => {
-        if (a.date === b.date) {
-          return (input.indexOf(a) - input.indexOf(b))
-        } else {
-          return (b.date-a.date)
-        }
-      }
-    )
+    mainVideo:[],
+    sideVideos:[],
+    sortedComments:[]
   }
 
   //Updates the value state when you type in the text area
@@ -54,79 +44,35 @@ class App extends React.Component {
     this.setState({value: ''})
   }
 
-
-
-  // shouldComponentUpdate(props, nextState) {
-  //      return (nextState !== this.state.isLoaded)     
-        
-  // }
-
-  getVideos() {
-    Promise.all([
-            axios.get(this.urlHandler('videos')),
-            axios.get(this.urlHandler('videos/'+ this.state.targetId)) 
-            ])
-            .then(
-              result => { 
-                // console.log(result[1].data)
-                // console.log(result[0].data)
-                this.setState({
-                  isLoaded: true,
-                  testArray: result[0].data,
-                  mainVideo: result[1].data
-                })
-              }
-            )
-            .catch(error => {
-              console.log(error)
-          this.setState({
-          isLoaded: true,
-          error
-          })
-        })
-  }
-
-  urlHandler = (endpoint) =>{
-    const apiKey = 'a74bc77e-a64a-4c16-94a1-ba5cb480ac2e';
-    return `https://project-2-api.herokuapp.com/${endpoint}?api_key=${apiKey}`
-  }
-
+  
   componentDidMount() {
-    this.getVideos();
-  }
-
-  handleVideoSelection = (event) => {
-    this.setState({targetId: event.currentTarget.id, isLoaded:false});
-    this.getVideos();
+    // this.setState(...this.props)
+    // this.props.getVideos(this.props.url);
+    // this.getVideos(this.props.url || this.props.match.params.id);
   }
 
   render() {
     
-    const { error, isLoaded, testArray, mainVideo } = this.state;
-    
-    if (error) {
-      return <div>Error: {error.message}</div>;
-    } else if (!isLoaded) {
-      return <div>Loading...</div>;
-    } else {
+      // const   {match, sideVideos, mainVideo, sortedComments, videoSelection, getVideos} = this.props
+      const   {sideVideos, mainVideo, sortedComments} = this.props
 
-
-    // this.componentDidMount()
-    //Filters out the current video from the next video list that appears on the side
-    let sideVideoToDisplay = testArray.filter(videos => 
-      {return (mainVideo.title !== videos.title && mainVideo.channel !== videos.channel)}
-    );
-
-    //Passes down the sorted array as a prop to Comments.js
-    let sortedComments = mainVideo.comments;
-    this.sortFunction(sortedComments);
-    console.log(this.state)
+    // console.log(match)
+    // console.log(this.state)
+    // console.log(videoSelection)
+    // console.log(getVideos);
+    // console.log(url)
+        
     return (
+
+
+
       <>
         {/**Current video information passed to the header */}
         <Header 
           poster={mainVideo.image}
           duration={mainVideo.duration}
+          getVideos={this.getVideos}
+
         />
         
         {
@@ -143,13 +89,15 @@ class App extends React.Component {
           currentVideo={mainVideo}
           commentArray={sortedComments} 
           
-          handleVideoSelection = {this.handleVideoSelection}
-          videoArray = {sideVideoToDisplay}
+          getVideos={this.getVideos}
+          match={this.props.match}
+          videoArray = {sideVideos}
+          getSideVideos={this.getSideVideos}
         />
       </>
     );
   }
-  }
+  
 }
 
 export default App;
