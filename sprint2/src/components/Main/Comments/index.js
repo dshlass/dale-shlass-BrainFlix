@@ -23,7 +23,7 @@ class Comments extends React.Component {
         </div> {/**End of the comment flex container */}
         <div className="comments--posted">
           { /**This generates the list of comments associated with the current video */
-            this.commentsArray.map((comment,index) => <PostedComment key={comment.id + comment.name + comment.date + index} name={comment.name} date={comment.date} comment={comment.comment}/>)
+            this.commentsArray.map(comment => <PostedComment key={comment.id} name={comment.name} date={comment.timestamp} comment={comment.comment}/>)
           }
         </div>
       </div> {/**End of the comment wrapper */}

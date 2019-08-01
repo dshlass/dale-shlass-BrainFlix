@@ -12,26 +12,81 @@ class Test extends React.Component {
           sideVideos: [],
           mainVideo: [],
           sortedComments: [],
+          value:''
         }
+
+
+
+
+
 
 
   sortFunction(input) {
     input.sort((a,b) => {
-        if (a.date === b.date) {
+        if (a.timestamp === b.timestamp) {
           return (input.indexOf(a) - input.indexOf(b))
         } else {
-          return (b.date-a.date)
+          return (b.timestamp-a.timestamp)
         }
       }
     )
   }
 
+
+  //Updates the value state when you type in the text area
+  handleChange= (event) => {
+    this.setState({value: event.target.value});
+  }
+
+  //displays a new post when submitted
+  handleSubmit= (event) => {
+    event.preventDefault();
+    if (this.state.value === '') {
+      alert('You must submit a comment');
+    } else {
+      
+      this.postComment(this.state.value)
+
+    }
+    //Clears the textarea after submit is clicked
+    this.getVideos(this.props.match.params.id)
+
+  }
+
+
+  postComment = (comment) => {
+    let body = {
+      name: `Dale`,
+      comment: comment
+    };
+
+    axios({
+      method: 'post',
+      url: this.urlHandler('videos/' + this.props.match.params.id + '/comments'),
+      contentType: 'application/json',
+      data: body
+    }).then( request => {
+        console.log(request.data)
+
+        let sortedComments = this.state.mainVideo
+        console.log(sortedComments.comments)
+        // this.sortFunction(sortedComments);
+
+        sortedComments.comments.unshift(request.data)
+          this.setState({sortedComments: sortedComments.comments})
+        //NEED TO SEND ANOTHER REQUEST. SPLIT UP MY AXIOS REQUESTS!!!
+          this.getVideos(this.props.match.params.id)
+         }).then(this.setState({value:''}))
+    .catch(err => console.log(err))
+  }
+
+
+
+
 // Working
   getsideVideos = () => {
     axios.get(this.urlHandler('videos'))
          .then(req => {
-           console.log(req.data)
-              console.log(this.state.mainVideo.title)
                 let sideVideoToDisplay = req.data.filter(videos => 
                 {return (this.state.mainVideo.title !== videos.title && this.state.mainVideo.channel !== videos.channel)}
                 );
@@ -40,8 +95,7 @@ class Test extends React.Component {
             isLoaded: true,
             sideVideos: sideVideoToDisplay
           })
-
-           })
+          })
          .catch(err => console.log(err))
       
   }
@@ -53,16 +107,16 @@ class Test extends React.Component {
               result => { 
             //Passes down the sorted array as a prop to Comments.js
             let sortedComments = result.data.comments;
-            console.log(sortedComments);
             this.sortFunction(sortedComments);
-
+            console.log(sortedComments)
                 this.setState({
                   isLoaded: true,
                   mainVideo: result.data,
-                  sortedComments: sortedComments,
+                  sortedComments: sortedComments
+                  // value:''
                 })
                   if (this.state.sideVideos) {
-                 this.getsideVideos()
+                    this.getsideVideos()
                   }
               }
             )
@@ -76,41 +130,6 @@ class Test extends React.Component {
     
   }
 
-  // getVideos = (id) => {
-  //   Promise.all([
-  //           axios.get(this.urlHandler('videos')),
-  //           axios.get(this.urlHandler('videos/'+ id) ) 
-  //           ])
-  //           .then(
-  //             result => { 
-              
-  //             let sideVideoToDisplay = result[0].data.filter(videos => 
-  //               {return (result[1].data.title !== videos.title && result[1].data.channel !== videos.channel)}
-  //               );
-
-  //           //Passes down the sorted array as a prop to Comments.js
-  //           let sortedComments = result[1].data.comments;
-  //           this.sortFunction(sortedComments);
-            
-  //               this.setState({
-  //                 isLoaded: true,
-  //                 sideVideos: sideVideoToDisplay,
-  //                 mainVideo: result[1].data,
-  //                 sortedComments: sortedComments,
-  //                 url: id
-  //               })
-  //             }
-  //           )
-  //           .catch(error => {
-  //             console.log(error)
-  //         this.setState({
-  //         isLoaded: true,
-  //         error
-  //         })
-  //       })
-  // }
-
-
   urlHandler = (endpoint) =>{
     const apiKey = 'a74bc77e-a64a-4c16-94a1-ba5cb480ac2e';
     return `https://project-2-api.herokuapp.com/${endpoint}?api_key=${apiKey}`
@@ -119,48 +138,47 @@ class Test extends React.Component {
   componentDidMount() {
     if (!this.props.match.params.id) {
       this.getVideos('1af0jruup5gu')
-      // this.getsideVideos();
     } else {
       this.getVideos(this.props.match.params.id)
-      // this.getsideVideos();
     }
-
-    // console.log(this.props.match.params.id)
-
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate(prevProps, prevState) {
     if (this.props.match.params.id !== prevProps.match.params.id) {
-      console.log('new URL')
-      // this.setState({isLoaded: false})
       this.getVideos(this.props.match.params.id)
+    }
+    else if (this.state.value !== prevState.value) {
+        console.log('yes')
     }
   }
   
   render() {
 
-    
     const { match } = this.props
     const {error, isLoaded, sideVideos, mainVideo, sortedComments } = this.state
-    
 
-
+  // Error handing 
     if (error) {
       return <div>Error: {error.message}</div>;
     } else if (!isLoaded) {
       return <div>Loading...</div>;
     } else {
-    // console.log(this.props)
-    console.log(match.params.id)
+    
+    //This sets the default match.params.id when the page loads to allow for the logo to go back to the default video
+    if (!match.params.id) {
+      match.params.id = '1af0jruup5gu';
+    }
+
     return(
-        <App match={match} 
+        <App match={match.params} 
             sideVideos={sideVideos} 
             mainVideo={mainVideo} 
             sortedComments={sortedComments} 
-            videoSelection={this.videoSelection} 
+            urlHandler={this.urlHandler}
+            handleChange={this.handleChange}
+            handleSubmit={this.handleSubmit}
+            value={this.state.value}
             getVideos={this.getVideos}
-            getSideVideos={this.getSideVideos}
-
         />      
     )
     }
