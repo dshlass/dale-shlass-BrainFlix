@@ -66,10 +66,8 @@ class Test extends React.Component {
       contentType: 'application/json',
       data: body
     }).then( request => {
-        console.log(request.data)
 
         let sortedComments = this.state.mainVideo
-        console.log(sortedComments.comments)
         // this.sortFunction(sortedComments);
 
         sortedComments.comments.unshift(request.data)
@@ -108,18 +106,16 @@ class Test extends React.Component {
             //Passes down the sorted array as a prop to Comments.js
             let sortedComments = result.data.comments;
             this.sortFunction(sortedComments);
-            console.log(sortedComments)
                 this.setState({
                   isLoaded: true,
                   mainVideo: result.data,
                   sortedComments: sortedComments
-                  // value:''
                 })
-                  if (this.state.sideVideos) {
-                    this.getsideVideos()
-                  }
+                 
+                
+                  
               }
-            )
+            ).then(this.getsideVideos())
             .catch(error => {
               console.log(error)
           this.setState({
@@ -146,9 +142,6 @@ class Test extends React.Component {
   componentDidUpdate(prevProps, prevState) {
     if (this.props.match.params.id !== prevProps.match.params.id) {
       this.getVideos(this.props.match.params.id)
-    }
-    else if (this.state.value !== prevState.value) {
-        console.log('yes')
     }
   }
   

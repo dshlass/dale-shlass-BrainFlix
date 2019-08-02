@@ -7,14 +7,17 @@ class PostedComment extends React.Component {
 
   //Generates the dynamic times of each post.
   timeStamp = (date) => {
-
+      console.log(typeof date)
+      console.log(date)
     //Setting variables for current date-time
     let pageDate = new Date();
+    // console.log(pageDate)
     let currentYear = pageDate.getFullYear();
     let currentMonth = pageDate.getMonth() + 1;
 
     //Setting variables for posted date-time
     let postedDate = new Date(date);
+    // console.timeLog(date);
     let postedYear = postedDate.getFullYear();
     let postedMonth = postedDate.getMonth() + 1;
 
@@ -49,6 +52,7 @@ class PostedComment extends React.Component {
       let minuteDiff = Math.floor(Math.abs(pageDate - postedDate) / 1000 / 60);
       let secondDiff = Math.floor(Math.abs(pageDate - postedDate) / 1000);
 
+        console.log(secondDiff)
       //Using 30 days as the cutoff for months old
       if (dayDiff >= 30) {
         return `${monthDiff} months ago`;
@@ -63,12 +67,12 @@ class PostedComment extends React.Component {
       else if (!dayDiff) {
         
         //If the post was posted more than 1 hour ago display in hours
-        if (secondDiff >= 36000 ) {
+        if (secondDiff >= 3600 ) {
           return `${hourDiff} hours ago`;
         }
         
         //If the post was posted more than 1 minute ago but less than an hour ago display in minutes
-        else if (secondDiff > 60 && secondDiff < 36000 ) {
+        else if (secondDiff > 60 && secondDiff < 3600 ) {
           return `${minuteDiff} minutes ago`;
         }
 
@@ -86,6 +90,8 @@ class PostedComment extends React.Component {
   } //End of Timestamp
   
   render() {  
+
+    // console.log(this.props.date)
     return (
         <div className='comments__posted-comment'>
           <div className='comments__img'>

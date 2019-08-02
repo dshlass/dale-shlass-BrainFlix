@@ -73,12 +73,6 @@ class App extends React.Component {
       // const   {match, sideVideos, mainVideo, sortedComments, videoSelection, getVideos} = this.props
       const   {sideVideos, mainVideo, sortedComments, handleChange, handleSubmit, value, match} = this.props
 
-    // console.log(match)
-    // console.log(this.state)
-    // console.log(videoSelection)
-    // console.log(getVideos);
-    // console.log(url)
-        
     return (
 
 

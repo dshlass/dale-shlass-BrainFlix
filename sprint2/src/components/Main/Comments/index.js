@@ -5,10 +5,22 @@ import Profile from '../../Reusable/Profile';
 
 class Comments extends React.Component {
     
-    //Setting the data received from App.js to commentsArray for ease of use
-    commentsArray = this.props.commentsArray;
-    
+    state={
+      commentsArray : this.props.commentsArray
+    }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.commentsArray !== prevProps.commentsArray) {
+      this.setState({commentsArray: this.props.commentsArray})
+    }
+  }
+
+  
+
   render() {
+
+    const {commentsArray} = this.state
+
     return (
     <section className="section--comments">
       <div className="comments"> {/**Start of the comment wrapper */}
@@ -23,7 +35,7 @@ class Comments extends React.Component {
         </div> {/**End of the comment flex container */}
         <div className="comments--posted">
           { /**This generates the list of comments associated with the current video */
-            this.commentsArray.map(comment => <PostedComment key={comment.id} name={comment.name} date={comment.timestamp} comment={comment.comment}/>)
+            commentsArray.map(comment => <PostedComment key={comment.id} name={comment.name} date={comment.timestamp} comment={comment.comment}/>)
           }
         </div>
       </div> {/**End of the comment wrapper */}
