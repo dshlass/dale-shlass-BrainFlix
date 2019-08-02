@@ -1,14 +1,27 @@
 import React from 'react';
+import Button from '../../../Reusable/Button'
 
 //Generated in Comments.js with the comment array passed down from App.js
 //Styles included within Comments.scss
 class PostedComment extends React.Component {
-  
+
+    state={hover: false}
+
+deleteButton = (props) => {
+  if (!this.state.hover) {
+    return <Button class={"buttons content__delete"} display={'Delete'}/>
+  } else {
+    return <Button class={"buttons content__delete content__delete--hover"} display={'Delete'} click={props.handleDelete}/>
+  }
+}
+
+  handleHover = () => {
+    this.setState({hover: !this.state.hover})
+  }
 
   //Generates the dynamic times of each post.
   timeStamp = (date) => {
-      console.log(typeof date)
-      console.log(date)
+
     //Setting variables for current date-time
     let pageDate = new Date();
     // console.log(pageDate)
@@ -52,7 +65,6 @@ class PostedComment extends React.Component {
       let minuteDiff = Math.floor(Math.abs(pageDate - postedDate) / 1000 / 60);
       let secondDiff = Math.floor(Math.abs(pageDate - postedDate) / 1000);
 
-        console.log(secondDiff)
       //Using 30 days as the cutoff for months old
       if (dayDiff >= 30) {
         return `${monthDiff} months ago`;
@@ -89,20 +101,34 @@ class PostedComment extends React.Component {
     } //End of If the post is within this current year
   } //End of Timestamp
   
+// componentDidUpdate(prevState) {
+//   if (this.state.hover !== prevState.hover) {
+//     console.log('yes')
+//   }
+// }
+
   render() {  
 
-    // console.log(this.props.date)
+    const {name, date, comment, likes, id} = this.props
+
     return (
-        <div className='comments__posted-comment'>
+        <div className='comments__posted-comment' onMouseEnter={this.handleHover} onMouseLeave={this.handleHover} id={id}>
           <div className='comments__img'>
             <img className='comments__img--small' src='https://www.fillmurray.com/54/54' alt='fillMurray'/>
           </div>
           <div className='content'> {/**Start of the content wrapper */}
             <div className='content__flex'> {/**Start of the username and date wrapper */}
-              <p className="content__username">{this.props.name}</p>
-              <p className="content__date">{this.timeStamp(this.props.date)}</p> {/**This generates a new timestamp for each post everytime a comment is posted */}
+              <p className="content__username">{name}</p>
+              <p className="content__date">{this.timeStamp(date)}</p> {/**This generates a new timestamp for each post everytime a comment is posted */}
             </div> {/**End of username and date wrapper */}
-              <p className='content__comment'>{this.props.comment}</p>
+            <div>
+              <p className='content__comment'>{comment}</p>
+            </div>
+              <div className="comments__bottom-wrapper">
+                <p className="content__like">Likes</p>
+                <p className="content__like-counter">{likes}</p>
+                {this.deleteButton(this.props)}
+              </div>
           </div>
         </div>
     );
@@ -110,3 +136,6 @@ class PostedComment extends React.Component {
 }
 
 export default PostedComment;
+
+
+

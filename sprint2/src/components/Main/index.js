@@ -8,7 +8,7 @@ class Main extends React.Component {
 
   render() {
 
-    const { currentVideo, handleChange, handleSubmit, value, commentArray, videoArray, match, getVideos } = this.props
+    const { currentVideo, handleChange, handleSubmit, value, commentArray, videoArray, match, getVideos, handleDelete } = this.props
 
     return (
       <main className='main'>
@@ -35,7 +35,8 @@ class Main extends React.Component {
           handleSubmit={handleSubmit}
           handleChange={handleChange}
           value={value}
-          commentsArray={commentArray} 
+          commentsArray={commentArray}
+          handleDelete={handleDelete}
         />
 
         {

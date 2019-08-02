@@ -10,14 +10,10 @@ import * as serviceWorker from './serviceWorker';
 ReactDOM.render(
 <Router>
       <Switch>
-            {/* <Route path='/videos/:id' render={(props) => <App match={props.match}/>}/>
-            <Route path='/upload' component={Upload}/> */}
             <Route path='/upload'  component={Upload}/>
             <Route path='/:id'  render={(props) => <Test match={props.match}/>}/>
             <Route path='/' exact component={Test}/>
-
       </Switch>
-
 </Router>, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change

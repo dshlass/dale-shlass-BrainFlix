@@ -30,7 +30,7 @@ class VideoInfo extends React.Component {
           </div> {/**End of video likes and views wrapper */}
         </div> {/**End of video info wrapper */}
         <p className='video-info__description'>{video.description}</p>
-        <p className='video-info__comment-count'>{video.comments.length} Comments</p> {/**Number of comments in the comment array */}
+        <p className='video-info__comment-count'>{video.comments.length} Comments</p> {/*Number of comments in the comment array*/}
       </>
     );
   }

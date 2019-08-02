@@ -7,7 +7,7 @@ class Button extends React.Component {
       <>
         <button 
           className={this.props.class} 
-          onClick={this.props.placeholder}
+          onClick={this.props.click}
         >
           {this.props.display}
         

@@ -15,12 +15,6 @@ class Test extends React.Component {
           value:''
         }
 
-
-
-
-
-
-
   sortFunction(input) {
     input.sort((a,b) => {
         if (a.timestamp === b.timestamp) {
@@ -79,6 +73,20 @@ class Test extends React.Component {
   }
 
 
+  handleDelete = (event) => {
+    event.preventDefault();
+
+    let targetId = event.currentTarget.parentElement.parentElement.parentElement.id
+    axios.delete(this.urlHandler('videos/' + this.props.match.params.id + '/comments/' + targetId ))
+         .then(req => {
+                console.log(req)
+          this.getVideos(this.props.match.params.id)
+
+          })
+         .catch(err => console.log(err))
+      
+  }
+
 
 
 // Working
@@ -112,10 +120,10 @@ class Test extends React.Component {
                   sortedComments: sortedComments
                 })
                  
-                
+                this.getsideVideos()
                   
               }
-            ).then(this.getsideVideos())
+            )
             .catch(error => {
               console.log(error)
           this.setState({
@@ -143,6 +151,9 @@ class Test extends React.Component {
     if (this.props.match.params.id !== prevProps.match.params.id) {
       this.getVideos(this.props.match.params.id)
     }
+    // else if (this.state.value !== prevState.value) {
+    //     console.log('yes')
+    // }
   }
   
   render() {
@@ -172,6 +183,7 @@ class Test extends React.Component {
             handleSubmit={this.handleSubmit}
             value={this.state.value}
             getVideos={this.getVideos}
+            handleDelete={this.handleDelete}
         />      
     )
     }

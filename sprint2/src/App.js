@@ -71,7 +71,7 @@ class App extends React.Component {
   render() {
     
       // const   {match, sideVideos, mainVideo, sortedComments, videoSelection, getVideos} = this.props
-      const   {sideVideos, mainVideo, sortedComments, handleChange, handleSubmit, value, match} = this.props
+      const   {sideVideos, mainVideo, sortedComments, handleChange, handleSubmit, value, match, handleDelete} = this.props
 
     return (
 
@@ -83,7 +83,6 @@ class App extends React.Component {
           poster={mainVideo.image}
           duration={mainVideo.duration}
           getVideos={this.getVideos}
-
         />
         
         {
@@ -104,6 +103,7 @@ class App extends React.Component {
           match={match}
           videoArray = {sideVideos}
           getSideVideos={this.getSideVideos}
+          handleDelete={handleDelete}
         />
       </>
     );

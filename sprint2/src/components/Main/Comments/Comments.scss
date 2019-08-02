@@ -10,6 +10,8 @@
 //Comment component speicific styling
 .comments {
 
+  max-width: 100%;
+
   &__flex {
     @extend %bottom-divider;
     padding-bottom: 2.4rem;
@@ -108,6 +110,8 @@
 
   &__submit {
     @extend %buttons;
+    cursor: pointer;
+
 
     @media #{$Tablet} {
       margin-right: 40px;
@@ -128,6 +132,12 @@
     display: flex;
     padding: 2.4rem 0;
   }
+
+  &__bottom-wrapper {
+    margin-top: 2.4rem;
+    display: flex;
+    justify-content: baseline;
+  }
 }  //End of Comments component
 
 
@@ -136,6 +146,9 @@
 .content {
     display:flex;
     flex-direction: column;
+    flex:1;
+    max-width: 100%;
+
 
   &__flex {
     display: flex;
@@ -151,7 +164,7 @@
 
   &__date {
     @extend %paragraph-regular;
-    margin-left: auto;
+    // margin-left: auto;
     color: $text-label-fill;
 
     @media #{$Tablet} {
@@ -159,12 +172,67 @@
     }
   }
 
+  &__delete {
+    @extend %paragraph-regular;
+    @include font-family(AvenirDemiBold);
+    background: $primary-cta;
+    margin-right: 2.4rem;
+
+    color: white;
+    text-transform: uppercase;
+    padding: 5px 10px;
+    border-radius: 4px;
+    margin-left: auto;
+    opacity: 0; 
+    transition: all 0.25s;
+
+    &:focus {
+      opacity: 1; 
+      transition: all 0.25s;
+    }
+
+    &:hover {
+      background: $primary-cta-hover;
+    }
+  
+    &--hover {
+      transition: all 0.25s;
+      opacity: 1;
+      margin-left: auto;
+      cursor: pointer;
+    }
+  }
+
+  &__like {
+    @extend %paragraph-regular;
+    padding: 5px 10px;
+
+  }
+
+  &__like-counter {
+    @extend %paragraph-regular;
+    padding: 5px 10px;
+    margin-right: auto;
+
+  }
+
+
+
+
   &__comment {
     @extend %paragraph-regular;
     color: $paragraph-text;
+    // overflow-wrap: break-word;
+    // overflow-wrap: anywhere;
+    // word-break: break-all;
+    // width: 150px;
 
     @media #{$Tablet} {
       max-width: 62.4rem;
+    }
+
+    @media #{$Tablet} {
+      // max-width: 62.4rem;
     }
 
   }
