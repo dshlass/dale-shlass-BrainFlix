@@ -16,7 +16,6 @@ class Main extends React.Component {
       commentArray, 
       videoArray, 
       match, 
-      getVideos, 
       handleDelete } = this.props
 
     return (
@@ -56,7 +55,6 @@ class Main extends React.Component {
           <Aside 
             videoArray={videoArray} 
             match={match}
-            getVideos={getVideos}
           />
       </main>
     );

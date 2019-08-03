@@ -38,10 +38,8 @@ class App extends React.Component {
           currentVideo={mainVideo}
           commentArray={sortedComments} 
           
-          getVideos={this.getVideos}
           match={match}
           videoArray = {sideVideos}
-          getSideVideos={this.getSideVideos}
           handleDelete={handleDelete}
         />
       </>
