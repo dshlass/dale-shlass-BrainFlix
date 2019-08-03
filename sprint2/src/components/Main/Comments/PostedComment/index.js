@@ -5,8 +5,11 @@ import Button from '../../../Reusable/Button'
 //Styles included within Comments.scss
 class PostedComment extends React.Component {
 
-    state={hover: false}
+    state = {
+      hover: false
+      }
 
+//Handles how the button is rendered when the posted comment container is hovered over
 deleteButton = (props) => {
   if (!this.state.hover) {
     return <Button class={"buttons content__delete"} display={'Delete'}/>
@@ -15,8 +18,13 @@ deleteButton = (props) => {
   }
 }
 
-  handleHover = () => {
-    this.setState({hover: !this.state.hover})
+  //Handles the button hover effect
+  handleHoverOn = () => {
+    this.setState({hover: true})
+  }
+
+  handleHoverOff = () => {
+    this.setState({hover: false})
   }
 
   //Generates the dynamic times of each post.
@@ -24,13 +32,11 @@ deleteButton = (props) => {
 
     //Setting variables for current date-time
     let pageDate = new Date();
-    // console.log(pageDate)
     let currentYear = pageDate.getFullYear();
     let currentMonth = pageDate.getMonth() + 1;
 
     //Setting variables for posted date-time
     let postedDate = new Date(date);
-    // console.timeLog(date);
     let postedYear = postedDate.getFullYear();
     let postedMonth = postedDate.getMonth() + 1;
 
@@ -100,19 +106,13 @@ deleteButton = (props) => {
       } //End of current day If statement
     } //End of If the post is within this current year
   } //End of Timestamp
-  
-// componentDidUpdate(prevState) {
-//   if (this.state.hover !== prevState.hover) {
-//     console.log('yes')
-//   }
-// }
 
   render() {  
 
     const {name, date, comment, likes, id} = this.props
 
     return (
-        <div className='comments__posted-comment' onMouseEnter={this.handleHover} onMouseLeave={this.handleHover} id={id}>
+        <div className='comments__posted-comment' onMouseEnter={this.handleHoverOn} onMouseLeave={this.handleHoverOff} id={id}>
           <div className='comments__img'>
             <img className='comments__img--small' src='https://www.fillmurray.com/54/54' alt='fillMurray'/>
           </div>
@@ -125,7 +125,7 @@ deleteButton = (props) => {
               <p className='content__comment'>{comment}</p>
             </div>
               <div className="comments__bottom-wrapper">
-                <p className="content__like">Likes</p>
+                <p className="content__like">Likes:</p>
                 <p className="content__like-counter">{likes}</p>
                 {this.deleteButton(this.props)}
               </div>

@@ -139,13 +139,14 @@
     color: $primary-cta;
     background: white;
     margin-bottom: 2.4rem;
+    text-align: center;
 
 
     @media #{$Tablet} {
       width: 16rem; 
       margin-bottom: 0;
       text-align: center;
-      padding-top: 18px;
+      padding-top: 16px;
     }
 
     &:active,

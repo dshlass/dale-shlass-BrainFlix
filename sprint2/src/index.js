@@ -1,18 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import './css/Master.scss';
 import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
-// import App from './App';
 import Upload from './components/Upload'
-import Test from './Router'
+import RequestHandler from './RequestHandler'
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
 <Router>
       <Switch>
             <Route path='/upload'  component={Upload}/>
-            <Route path='/:id'  render={(props) => <Test match={props.match}/>}/>
-            <Route path='/' exact component={Test}/>
+            <Route path='/:id'  render={(props) => <RequestHandler match={props.match}/>}/>
+            <Route path='/' exact component={RequestHandler}/>
       </Switch>
 </Router>, document.getElementById('root'));
 
