@@ -9,7 +9,6 @@
 
 //Comment component speicific styling
 .comments {
-
   max-width: 100%;
 
   &__flex {
@@ -112,7 +111,6 @@
     @extend %buttons;
     cursor: pointer;
 
-
     @media #{$Tablet} {
       margin-right: 40px;
       margin-left: 16px;
@@ -206,14 +204,12 @@
   &__like {
     @extend %paragraph-regular;
     padding: 5px 0;
-
   }
 
   &__like-counter {
     @extend %paragraph-regular;
     padding: 5px 10px;
     margin-right: auto;
-
   }
 
   &__comment {
@@ -223,7 +219,6 @@
     @media #{$Tablet} {
       max-width: 62.4rem;
     }
-
   }
 } //End of Content component
 

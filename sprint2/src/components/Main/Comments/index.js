@@ -9,6 +9,7 @@ class Comments extends React.Component {
     commentsArray : this.props.commentsArray
   }
 
+  //Comment array ups when new information is received
   componentDidUpdate(prevProps) {
     if (this.props.commentsArray !== prevProps.commentsArray) {
       this.setState({commentsArray: this.props.commentsArray})
@@ -34,7 +35,16 @@ class Comments extends React.Component {
           </div> {/**End of the comment flex container */}
           <div className="comments--posted">
             { /**This generates the list of comments associated with the current video */
-              commentsArray.map(comment => <PostedComment key={comment.id} handleDelete={this.props.handleDelete} name={comment.name} date={comment.timestamp} comment={comment.comment} likes={comment.likes} id={comment.id}/>)
+              commentsArray.map(comment => 
+                <PostedComment 
+                  key={comment.id} 
+                  handleDelete={this.props.handleDelete} 
+                  name={comment.name} 
+                  date={comment.timestamp} 
+                  comment={comment.comment} l
+                  ikes={comment.likes} 
+                  id={comment.id}
+                />)
             }
           </div>
         </div> {/**End of the comment wrapper */}

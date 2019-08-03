@@ -9,6 +9,7 @@ class VideoInfo extends React.Component {
     //Props received from App.js and set to video for ease of use
     const video = this.props.currentVideo;
     
+    //Converts the time to month/date/year format
     const convertTimestamp = (input) => {
       let date = new Date(input.timestamp)
       return `${date.getMonth()}/${date.getDate()}/${date.getFullYear()}`

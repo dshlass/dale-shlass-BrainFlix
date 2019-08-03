@@ -10,7 +10,6 @@ class Button extends React.Component {
           onClick={this.props.click}
         >
           {this.props.display}
-        
         </button>
       </>
     );

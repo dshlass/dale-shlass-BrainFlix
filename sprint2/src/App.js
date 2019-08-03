@@ -1,9 +1,9 @@
 import React from 'react';
 import './css/Master.scss';
-import App from './components/App';
+import Master from './components/Master';
 import axios from 'axios';
 
-class RequestHandler extends React.Component {
+class App extends React.Component {
 
   state ={
           isLoaded: false,
@@ -41,7 +41,7 @@ class RequestHandler extends React.Component {
     this.getVideos(this.props.match.params.id)
   }
 
-  //Function to post comments
+  //method to post comments
   postComment = (comment) => {
     
     let body = {
@@ -57,18 +57,19 @@ class RequestHandler extends React.Component {
     }).then( request => {
 
         let sortedComments = this.state.mainVideo
-
         sortedComments.comments.unshift(request.data)
+          
           this.setState({
             sortedComments: sortedComments.comments
             })
 
           this.getVideos(this.props.match.params.id)
 
-         })
-    .catch(err => console.log(err))
-  }
+        })
+      .catch(err => console.log(err))
+  } //end of post comment method
 
+  //method to deletion of a comment
   handleDelete = (event) => {
     event.preventDefault();
 
@@ -82,6 +83,9 @@ class RequestHandler extends React.Component {
          .catch(err => console.log(err))
   }
 
+  // method for the API request for both the mainVideo and sideVideos
+  // result[0] = sideVideos
+  // result[1] = mainVideo 
   getVideos = (id) => {
     Promise.all([
             axios.get(this.urlHandler('videos')),
@@ -89,9 +93,12 @@ class RequestHandler extends React.Component {
             ])
             .then(result => { 
                 if (result && result[0].status === 200 && result[1].status === 200){
+                
+                //Sorts the comments received
                 let sortedComments = result[1].data.comments;
                 this.sortFunction(sortedComments);
 
+                //Filters out the mainVideo received from the sideVideos received 
                 let sideVideoToDisplay = result[0].data.filter(videos => 
                   {
                     return (result[1].data.title !== videos.title && result[1].data.channel !== videos.channel)
@@ -117,11 +124,13 @@ class RequestHandler extends React.Component {
      })
   }
 
+  //Method to handle the query builder
   urlHandler = (endpoint) =>{
     const apiKey = 'a74bc77e-a64a-4c16-94a1-ba5cb480ac2e';
     return `https://project-2-api.herokuapp.com/${endpoint}?api_key=${apiKey}`
   }
   
+  //When the component mounts the API is called
   componentDidMount() {
     if (!this.props.match.params.id) {
       this.getVideos('1af0jruup5gu')
@@ -131,12 +140,14 @@ class RequestHandler extends React.Component {
     }
   }
 
+  //When the URL changes the API is called again
   componentDidUpdate(prevProps) {
     if (this.props.match.params.id !== prevProps.match.params.id) {
       this.getVideos(this.props.match.params.id)
     }
   }
   
+  //Checks for the data received or and error and then displays the content.
   render() {
 
     const { match } = this.props
@@ -167,7 +178,7 @@ class RequestHandler extends React.Component {
     }
 
     return(
-        <App match={match.params} 
+        <Master match={match.params} 
             sideVideos={sideVideos} 
             mainVideo={mainVideo} 
             sortedComments={sortedComments} 
@@ -182,6 +193,6 @@ class RequestHandler extends React.Component {
   }
 }
 
-  export default RequestHandler
+  export default App
 
 

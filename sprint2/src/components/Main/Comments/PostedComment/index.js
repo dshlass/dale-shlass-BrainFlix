@@ -18,11 +18,12 @@ deleteButton = (props) => {
   }
 }
 
-  //Handles the button hover effect
+  //Method to for hover state 
   handleHoverOn = () => {
     this.setState({hover: true})
   }
 
+  //Method to for hover state 
   handleHoverOff = () => {
     this.setState({hover: false})
   }
@@ -127,7 +128,7 @@ deleteButton = (props) => {
               <div className="comments__bottom-wrapper">
                 <p className="content__like">Likes:</p>
                 <p className="content__like-counter">{likes}</p>
-                {this.deleteButton(this.props)}
+                {this.deleteButton(this.props)} {/**This button is generated depending on the state of hover */}
               </div>
           </div>
         </div>

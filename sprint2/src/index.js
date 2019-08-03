@@ -3,15 +3,15 @@ import ReactDOM from 'react-dom';
 import './css/Master.scss';
 import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import Upload from './components/Upload'
-import RequestHandler from './RequestHandler'
+import App from './App'
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
 <Router>
       <Switch>
             <Route path='/upload'  component={Upload}/>
-            <Route path='/:id'  render={(props) => <RequestHandler match={props.match}/>}/>
-            <Route path='/' exact component={RequestHandler}/>
+            <Route path='/:id'  render={(props) => <App match={props.match}/>}/>
+            <Route path='/' exact component={App}/>
       </Switch>
 </Router>, document.getElementById('root'));
 

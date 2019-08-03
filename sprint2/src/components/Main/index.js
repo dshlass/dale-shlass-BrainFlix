@@ -3,7 +3,6 @@ import VideoInfo from './VideoInfo';
 import Comments from './Comments';
 import Aside from './Aside';
 
-
 class Main extends React.Component {
 
   render() {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 class NextVideo extends React.Component {
 
@@ -7,7 +7,7 @@ class NextVideo extends React.Component {
   render() {
 
     const {id, image, title, channel} = this.props
-    // console.log(match);
+
     return (
         <Link className='next-video' to={'/' +id} id={id}>
           <div className='next-video__image-wrapper'> {/**Start of video image wrapper */}
