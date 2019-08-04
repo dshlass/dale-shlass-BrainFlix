@@ -10,7 +10,7 @@ ReactDOM.render(
 <Router>
       <Switch>
             <Route path='/upload'  component={Upload}/>
-            <Route path='/:id'  render={(props) => <App match={props.match}/>}/>
+            <Route path='/video/:id'  render={(props) => <App match={props.match}/>}/>
             <Route path='/' exact component={App}/>
       </Switch>
 </Router>, document.getElementById('root'));

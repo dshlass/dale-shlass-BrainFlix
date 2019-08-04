@@ -9,7 +9,7 @@ class NextVideo extends React.Component {
     const {id, image, title, channel} = this.props
 
     return (
-        <Link className='next-video' to={'/' +id} id={id}>
+        <Link className='next-video' to={'/video/' +id} id={id}>
           <div className='next-video__image-wrapper'> {/**Start of video image wrapper */}
             <img src={image} className='next-video__image'  alt='Thumbnail of the video'/>
           </div> {/**End of video image wrapper */}

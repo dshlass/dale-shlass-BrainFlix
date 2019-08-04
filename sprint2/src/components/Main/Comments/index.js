@@ -4,22 +4,10 @@ import PostedComment from './PostedComment';
 import Profile from '../../Reusable/Profile';
 
 class Comments extends React.Component {
-    
-  state={
-    commentsArray : this.props.commentsArray
-  }
-
-  //Comment array ups when new information is received
-  componentDidUpdate(prevProps) {
-    if (this.props.commentsArray !== prevProps.commentsArray) {
-      this.setState({commentsArray: this.props.commentsArray})
-    }
-  }
 
   render() {
 
-    const {commentsArray} = this.state
-    const {handleSubmit,value, handleChange} = this.props
+    const {commentsArray, handleSubmit,value, handleChange} = this.props
 
     return (
       <section className="section--comments">
@@ -41,8 +29,8 @@ class Comments extends React.Component {
                   handleDelete={this.props.handleDelete} 
                   name={comment.name} 
                   date={comment.timestamp} 
-                  comment={comment.comment} l
-                  ikes={comment.likes} 
+                  comment={comment.comment}
+                  likes={comment.likes} 
                   id={comment.id}
                 />)
             }

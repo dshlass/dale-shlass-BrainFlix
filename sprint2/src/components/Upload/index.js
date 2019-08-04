@@ -7,12 +7,11 @@ import {Link} from 'react-router-dom'
 //Video information passed down as props from App.js
 class Upload extends React.Component {
 
-test = (event) => {
+placeholder = (event) => {
   event.preventDefault();
 }
 
   render() {
-    console.log(this.props)
     return (
       <>
         <Navigation />
@@ -23,7 +22,7 @@ test = (event) => {
               <p className='upload__label'>Video thumbnail</p>
               <img className='upload__image'src={placeholder} alt='uploaded video placeholder'/>
             </div>
-            <form className='upload__wrapper--input' onSubmit={this.test}>
+            <form className='upload__wrapper--input' onSubmit={this.placeholder}>
               <label htmlFor='video-title' className='upload__label'>Title your video</label>
               <input className='upload__input' name='video-title' id='video-title' placeholder='Add a title for your video'/>
               <label htmlFor='video-description' className='upload__label'>Add a video description</label>

@@ -1,4 +1,18 @@
 {
-  "workbench.colorCustomizations": {},
-  "git.ignoreLimitWarning": true
+  "workbench.colorCustomizations": {
+    "activityBar.background": "#f7d0fa",
+    "activityBar.foreground": "#15202b",
+    "activityBar.inactiveForeground": "#15202b99",
+    "activityBarBadge.background": "#90870f",
+    "activityBarBadge.foreground": "#e7e7e7",
+    "titleBar.activeBackground": "#f0a1f6",
+    "titleBar.inactiveBackground": "#f0a1f699",
+    "titleBar.activeForeground": "#15202b",
+    "titleBar.inactiveForeground": "#15202b99",
+    "statusBar.background": "#f0a1f6",
+    "statusBarItem.hoverBackground": "#e972f2",
+    "statusBar.foreground": "#15202b"
+  },
+  "git.ignoreLimitWarning": true,
+  "peacock.color": "#f0a1f6"
 }
