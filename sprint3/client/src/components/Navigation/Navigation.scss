@@ -1,0 +1,127 @@
+//Navigation component styling
+.navigation {
+  @extend %padding--mobile;
+  @extend %padding--tablet;
+  @extend %padding--desktop;
+  @extend %bottom-divider;
+
+  display: flex;
+  flex-direction: column;
+
+  @media #{$Tablet} {
+    flex-direction: row;
+    height: 8.0rem;
+    align-items: center;
+  }
+  
+  &__logo-wrapper {
+    padding: 12px 0;
+    display: flex;
+    justify-content: center;
+
+    @media #{$Tablet} {
+      padding: 0;
+    }
+  }
+
+  &__logo {
+    width: 120px;
+    height: 24px;
+  }
+
+  //Start of search bar styling
+  &__search {
+    @extend %paragraph-regular;
+
+    background: url('../assets/Icons/SVG/Icon-search.svg'), $text-field-bg-fill;
+    background-repeat: no-repeat;
+    background-position-y: center;
+    background-position-x: 16px;
+    
+    color: $paragraph-text;
+    border: 1px solid $field-border;
+    height: 4.9rem; 
+    padding: 16px 0 16px 40px;
+    margin-bottom: 0.8rem;
+    border-radius: 4px;
+
+    &::placeholder {
+      color: $paragraph-text;
+      opacity: 1;
+    }
+
+    &:focus {
+      border: 3px solid $primary-cta;
+    }
+
+    @media #{$Tablet} {
+      width: 190px;
+      margin-left: auto;
+      margin-bottom: 0;
+      height: 4.8rem; 
+    }
+
+    @media #{$Desktop} {
+      width: 252px;
+    }
+  } //End of search bar styling
+
+  &__flex-wrapper {
+    display: flex;
+    flex: 1;
+    margin-bottom: 1.6rem;
+
+    @media #{$Tablet} {
+      flex: 0;
+      margin-bottom: 0;
+      margin-left: 2.4rem;
+    }
+  }
+
+  //Start of button stylings
+  &__button { 
+    @extend %buttons;
+    flex: 1;
+    @include media-max-width(Mobile, 4, 3);
+    padding-top: 4px;
+
+    background: url('../assets/Icons/SVG/Icon-upload.svg'), $primary-cta;
+    background-repeat: no-repeat;
+    background-position-y: center;
+    background-position-x: 30%;
+
+    &:hover {
+      background: url('../assets/Icons/SVG/Icon-upload.svg'), $primary-cta-hover;
+      background-repeat: no-repeat;
+      background-position-y: center;
+      background-position-x: 30%;
+    }
+
+    @media #{$Tablet} {
+      width: 12rem;
+      padding-left: 15%;
+      background-position-x: 15%;
+
+      &:active,
+      &:hover {
+        padding-left: 15%;
+        background-position-x: 15%;
+      }
+    }
+
+    @media #{$Desktop} {
+      max-width: 11.6rem;
+    }
+  }  //End of button stylings
+
+  &__profile {
+    height: 48px;
+    width: 48px;
+    border-radius: 50%;
+    margin-left: 16px;
+
+    @media #{$Tablet} {
+      margin-left: 2.4rem;
+    }
+  }
+}

@@ -1,0 +1,114 @@
+//VideoControls component specific styling
+.controls {
+  position: absolute;
+  bottom: 8px;
+  left: 16px;
+  right: 16px;
+
+  display: flex;
+  justify-content: space-between;
+
+  @media #{$Tablet} {
+    bottom: 16px;
+    left: 42px;
+    right: 42px;
+  }
+
+  @media #{$Desktop} {
+    left: 264px;
+    right: 264px;
+  }
+
+  &__play {
+    width: 48px;
+    background: url('../assets/Icons/SVG/Icon-play.svg'), rgba(0,0,0,0.4);
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 4px;
+
+    &:active {
+      background:url('../assets/Icons/SVG/Icon-play.svg'), rgba(45, 171, 255, 0.7);
+      background-repeat: no-repeat;
+      background-position: center;
+      border-radius: 4px;
+    }
+  }
+
+  &__screen-vol {
+    display: flex;
+    margin-left: 8px;
+    background: rgba(0,0,0,0.4);
+    border-radius: 4px;
+    height: 32px;
+
+    @media #{$Tablet} {
+      margin-left: 16px;
+    }
+  }
+
+  &__fullscreen {
+    background: url('../assets/Icons/SVG/Icon-fullscreen.svg'), rgba(0,0,0,0);
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    padding: 8px 16px 8px 24px;
+    border-radius: 4px;
+
+    &:active {
+      background: url('../assets/Icons/SVG/Icon-fullscreen.svg'), rgba(45, 171, 255, 0.7);
+      background-position: center;
+      background-repeat: no-repeat;
+      border-radius: 4px 0 0 4px;
+    }
+  }
+
+  &__volume {
+    background: url('../assets/Icons/SVG/Icon-volume.svg'), rgba(0,0,0,0);
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: 8px 24px 8px 16px;
+    border-radius: 4px;
+
+    &:active {
+      background: url('../assets/Icons/SVG/Icon-volume.svg'), rgba(45, 171, 255, 0.7);
+      background-position: center;
+      background-repeat: no-repeat;
+      border-radius: 0 4px 4px 0;
+    }
+  }
+
+  &__progress {
+    flex: 1;
+    padding: 8px 16px;
+    border-radius: 4px;
+    background: rgba(0,0,0,0.4);
+    margin-left: 8px;
+
+    display: flex;
+    align-items: center;
+
+    @media #{$Tablet} {
+      margin-left: 16px;
+    }
+
+    &--bar {
+      background:rgba(0,0,0,0.5);
+      border:rgba(0,0,0,0.5);
+      border-radius: 5px;
+      flex:1;
+    }
+
+    &--duration {
+      font-size: 1.1rem; 
+      font-weight: bold;
+      display: none;
+      color: rgba(255,255,255,0.5);
+
+      @media #{$Tablet} {
+        display: block;
+        margin-left: 16px;
+      }
+    }
+  }
+}
+

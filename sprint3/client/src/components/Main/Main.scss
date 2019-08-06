@@ -1,0 +1,21 @@
+//Styles from the main component
+.main {
+  @extend %padding--mobile;
+  @extend %padding--tablet;
+  @extend %padding--desktop;
+
+  display:flex;
+  flex-direction: column;
+
+  @media #{$Desktop} {
+    flex-direction: row;
+  }
+}
+
+.section {
+  @media #{$Desktop} {
+    margin-right: 2.4rem;
+    border-right: 1px solid $field-border;
+    padding-bottom: 2.4rem;
+  }
+}
