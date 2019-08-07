@@ -2,19 +2,17 @@ const mainVideo = require("../data/mainVideo.json");
 
 let videoId = mainVideo.map(video => video.id);
 
-
-getMainVideo = reqId => {
+const getMainVideo = (reqId,res) => {
   let match = false;
   for (let id of videoId) {
     if (id !== reqId) {
       continue;
     } else match = true;
   }
-  if (match === true) {
-    return mainVideo.filter(video => {
-      return video.id === reqId;
-    });
-  } else return "404 Video Not Found";
+
+  return (match) 
+        ? (res.status(200).json(mainVideo.find(video => { return video.id === reqId }))) 
+        : res.status(404).send("404 Video Not Found")
 };
 
 module.exports = getMainVideo

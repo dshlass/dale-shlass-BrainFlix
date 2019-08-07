@@ -11,7 +11,7 @@ class Master extends React.Component {
 
   urlHandler = endpoint => {
     const apiKey = "a74bc77e-a64a-4c16-94a1-ba5cb480ac2e";
-    return `https://project-2-api.herokuapp.com/${endpoint}?api_key=${apiKey}`;
+    return `http://localhost:8000/${endpoint}?api_key=${apiKey}`;
   };
 
   getVideos = id => {
@@ -30,7 +30,6 @@ class Master extends React.Component {
         }
       })
       .catch(error => {
-        console.log(error);
         this.setState({
           isLoaded: true,
           error
