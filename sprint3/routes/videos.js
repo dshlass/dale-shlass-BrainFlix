@@ -1,23 +1,27 @@
 const express = require('express')
-const sideVideo = require("../data/sideVideo.json");
-const apiKeyMiddleware = require('../middleware/verifyApi');
-const mainVideoMiddleware = require('../middleware/getMainVideo');
 const router = express.Router()
 
-router.get("/videos", (req, res) => {
-  let notVerified = apiKeyMiddleware(req);
-  if (notVerified) {
-    res.status(403).send("403 Not Authorized");
-  } else res.status(200).json(sideVideo);
+//Video array
+const mainVideo = require("../data/videos.json");
+
+//Middleware to verify if an API key exists
+const verifyApi = require('../middleware/verifyApi');
+router.use(verifyApi)
+
+router.use("/:id",  (req, res,next) => {
+  let matchingVideo = mainVideo.find(video => { return video.id === req.params.id })
+  if (matchingVideo) {
+    res.status(200).json(matchingVideo)
+  } else {
+    res.status(404).json({
+      message: "No video with that id exists"
+    })
+  }
 });
 
-router.get("/videos/:id", (req, res) => {
-  let notVerified = apiKeyMiddleware(req);
-  // let returnVideo = mainVideoMiddleware(req.params.id,res);
-
-  if (notVerified) {
-    res.status(403).send("403 Not Authorized");
-  } else mainVideoMiddleware(req.params.id, res)
+router.use("/", (req, res, next) => {
+  res.status(200).json(mainVideo);
 });
+
 
 module.exports = router

@@ -9,18 +9,13 @@ class Master extends React.Component {
     isLoaded: false
   };
 
-  urlHandler = endpoint => {
-    const apiKey = "a74bc77e-a64a-4c16-94a1-ba5cb480ac2e";
-    return `http://localhost:8000/${endpoint}?api_key=${apiKey}`;
-  };
-
   getVideos = id => {
     if (!id) {
       id = "1af0jruup5gu";
     }
 
     axios
-      .get(this.urlHandler("videos/" + id))
+      .get(this.props.urlHandler("videos/" + id))
       .then(result => {
         if (result.status === 200) {
           this.setState({
@@ -53,6 +48,7 @@ class Master extends React.Component {
 
   render() {
     const { mainVideo, isLoaded, error } = this.state;
+    const {match, urlHandler} = this.props
     if (error) {
       return (
         <>
@@ -80,8 +76,8 @@ class Master extends React.Component {
 
           <Main
             mainVideo={mainVideo}
-            urlHandler={this.urlHandler}
-            match={this.props.match}
+            urlHandler={urlHandler}
+            match={match}
             getVideos={this.getVideos}
           />
         </>

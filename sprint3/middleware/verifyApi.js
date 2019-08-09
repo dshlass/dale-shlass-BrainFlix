@@ -1,6 +1,10 @@
-verifyApiKey = req => {
+verifyApiKey = (req, res, next) => {
   if (!req.query.api_key) {
-    return "403 Not Authorized";
+    res.status(403).json({
+      message: "403 Not Authorized"
+    })
+  } else {
+    next()
   }
 };
 

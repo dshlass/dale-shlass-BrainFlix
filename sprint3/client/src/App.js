@@ -6,30 +6,10 @@ import Master from './components/Master';
 
 class App extends React.Component {
 
-  //Updates the value state when you type in the text area
-  // handleChange= (event) => {
-  //   this.setState({value: event.target.value});
-  // }
-
-  // //displays a new post when submitted
-  // handleSubmit= (event) => {
-  //   event.preventDefault();
-  //   if (this.state.value === '') {
-  //     alert('You must submit a comment');
-  //   } else {
-
-  //     this.postComment(this.state.value)
-
-  //   }
-  //   //Clears the textarea after submit is clicked
-  //     if (!this.state.match) {
-  //       let id = '1af0jruup5gu';
-  //       this.getVideos(id)
-  //     }  else {
-  //               this.getVideos(this.state.match.params.id)
-
-  //     }
-  // }
+  urlHandler = endpoint => {
+    const apiKey = "a74bc77e-a64a-4c16-94a1-ba5cb480ac2e";
+    return `http://localhost:8000/${endpoint}?api_key=${apiKey}`;
+  };
 
 
   // postComment = (comment) => {
@@ -72,11 +52,6 @@ class App extends React.Component {
   //        .catch(err => console.log(err))
       
   // }
-
-
-
-// Working
-  
   
 
   
@@ -84,9 +59,9 @@ class App extends React.Component {
     return(
       <BrowserRouter>
         <Switch>
-          <Route path='/upload' exact component={Upload}/>
-          <Route path='/videos/:id' exact  component={Master}/>
-          <Route path='/' exact component={Master}/>
+          <Route path='/upload' exact render={(props)=> <Upload match={props.match} urlHandler={this.urlHandler} />}/>
+          <Route path='/videos/:id' exact render={(props) => <Master match={props.match} urlHandler={this.urlHandler} />}/>
+          <Route path='/' exact render={(props) => <Master match={props.match} urlHandler={this.urlHandler} />}/>
         </Switch>
       </BrowserRouter>    
       )
