@@ -95,7 +95,7 @@ likeButton = (event) => {
         <>
           <Navigation />
 
-          <Video poster={mainVideo.image} duration={mainVideo.duration} />
+          <Video poster={mainVideo.image} duration={mainVideo.duration} video={mainVideo.video} />
 
           <Main
             mainVideo={mainVideo}
