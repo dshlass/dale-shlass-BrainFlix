@@ -5,7 +5,7 @@ const uploadRoutes = require('./routes/upload')
 const cors = require('cors')
 
 app.use(express.json());
-app.use(express.urlencoded({exended:true}));
+app.use(express.urlencoded({extended:true}));
 
 app.use(cors());
 

@@ -10,44 +10,37 @@ router.use(verifyApi)
 
 router.delete("/:id/comments/:commentid", (req, res, next) => {
 
-    let matchingVideo = mainVideo.find(video => {
-      return video.id === req.params.id;
-    });
+  let matchingVideo = mainVideo.find(video => {
+    return video.id === req.params.id;
+  });
 
-    let matchingComment = matchingVideo.comments.find(comment => {
-      return comment.id === req.params.commentid
-    })
+  let matchingComment = matchingVideo.comments.find(comment => {
+    return comment.id === req.params.commentid
+  })
 
+  let pos = matchingVideo.comments
+            .map(comments => comments.id)
+            .indexOf(req.params.commentid);
 
-    let pos = matchingVideo.comments
-          .map(comments => comments.id)
-          .indexOf(req.params.commentid);
+  matchingVideo.comments.splice(pos, 1);
 
-    matchingVideo.comments.splice(pos, 1);
+  res.status(200).json(matchingComment);
 
-    res.status(200).json({
-      message: 'Delete successful',
-      id: req.params.commentid
-    });
-  
 });
-
-
 
 router.put("/:id/comments/:commentid", (req, res, next) => {
 
-    let matchingVideo = mainVideo.find(video => {
-      return video.id === req.params.id;
-    });
+  let matchingVideo = mainVideo.find(video => {
+    return video.id === req.params.id;
+  });
 
-    let matchingComment = matchingVideo.comments.find(comment => {
-      return comment.id === req.params.commentid
-    })
+  let matchingComment = matchingVideo.comments.find(comment => {
+    return comment.id === req.params.commentid
+  })
 
-    matchingComment.likes = matchingComment.likes + 1
+  matchingComment.likes = matchingComment.likes + 1
+  res.status(200).json(matchingComment);
 
-    res.status(200).json({message: 'Comment ID'});
-  
 });
 
 
@@ -92,22 +85,26 @@ router.put("/:id/like", (req, res, next) => {
 });
 
 router.post("/:id/comments", (req, res, next) => {
-  console.log(req.params.id)
+  
   if (req.headers["content-type"] && req.headers["content-type"] === "application/json") {
+    
     const data = req.body;
-      let matchingVideo = mainVideo.find(video => {
-        return video.id === req.params.id;
-      });
-      
-      matchingVideo.comments.unshift(req.body)
-      res.status(200).send(data);
+    
+    let matchingVideo = mainVideo.find(video => {
+      return video.id === req.params.id;
+    });
+    
+    matchingVideo.comments.unshift(req.body)
+    
+    res.status(200).send(data);
   }
 });
 
 
-
 router.use("/:id",  (req, res,next) => {
+  
   let matchingVideo = mainVideo.find(video => { return video.id === req.params.id })
+  
   if (matchingVideo) {
     res.status(200).json(matchingVideo)
   } else {

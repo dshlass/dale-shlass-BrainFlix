@@ -32,10 +32,6 @@ likeButton = (event) => {
       .catch(err => console.log(err));
   }
 
-
-
-
-
   getVideos = id => {
     if (!id) {
       id = "1af0jruup5gu";

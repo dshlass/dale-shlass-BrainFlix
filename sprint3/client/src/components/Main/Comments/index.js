@@ -5,7 +5,6 @@ import Profile from "../../Reusable/Profile";
 import axios from "axios";
 import uuid from "uuid/v1";
 
-
 class Comments extends React.Component {
   state = {
     value: "",
@@ -13,7 +12,7 @@ class Comments extends React.Component {
 
   commentController = props => {
     if (!props.commentsArray.length) {
-      return(<p>Please add a new comment</p>)
+      return(<p className="content__username">Please add a new comment</p>)
     } else {
       return (props.commentsArray.map(comment => (
         <PostedComment
@@ -65,13 +64,13 @@ class Comments extends React.Component {
       },
       data: body
     })
-      .then(request => {
-        this.props.getVideos(this.props.match.params.id);
-        let newComments = this.props.commentsArray.unshift(request.data);
-        this.setState({ commentsArray: newComments });
-      })
-      .then(this.setState({ value: "" }))
-      .catch(err => console.log(err));
+    .then(request => {
+      let newComments = this.props.commentsArray.unshift(request.data);
+      this.setState({ commentsArray: newComments });
+      this.props.getVideos(this.props.match.params.id)
+    })
+    .then(this.setState({ value: "" }))
+    .catch(err => console.log(err));
   };
 
   handleDelete = event => {
@@ -82,18 +81,19 @@ class Comments extends React.Component {
       id = "1af0jruup5gu";
     }
 
-    let targetId =
-      event.currentTarget.parentElement.parentElement.parentElement.id;
+    let targetId = event.currentTarget.parentElement.parentElement.parentElement.id;
     
     axios
       .delete(this.props.urlHandler("videos/" + id + "/comments/" + targetId))
       .then(req => {
+        
         let pos = this.props.commentsArray
           .map(comments => comments.id)
           .indexOf(req.data.id);
+
         let newComments = this.props.commentsArray.splice(pos, 1);
-        this.props.getVideos(this.props.match.params.id);
         this.setState({ commentsArray: newComments });
+        this.props.getVideos(this.props.match.params.id)
       })
       .catch(err => console.log(err));
   };
@@ -110,15 +110,13 @@ class Comments extends React.Component {
 
     let targetLike = event.currentTarget.nextSibling;
     let pos = this.props.commentsArray
-      .map(comments => comments.id)
-      .indexOf(targetId);
+              .map(comments => comments.id)
+              .indexOf(targetId);
     
     targetLike.innerHTML = this.props.commentsArray[pos].likes + 1;
 
     this.props.commentsArray[pos].likes = parseInt(targetLike.innerHTML);
 
-
-    //UNCOMMENT AXIOS ONCE API IS WORKING
     axios
       .put(this.props.urlHandler("videos/" + id + "/comments/" + targetId))
       .then(req => {
@@ -131,8 +129,6 @@ class Comments extends React.Component {
 
   componentDidUpdate(prevProps) {
     if (this.props.match.params.id !== prevProps.match.params.id && this.props.match.params.id) {
-      this.setState({ commentsArray: this.props.commentsArray });
-    } else if (this.props.commentsArray !== prevProps.commentsArray) {
       this.setState({ commentsArray: this.props.commentsArray });
     }
   }
