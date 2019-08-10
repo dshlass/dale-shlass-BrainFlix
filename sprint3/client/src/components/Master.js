@@ -6,8 +6,35 @@ import axios from "axios";
 
 class Master extends React.Component {
   state = {
-    isLoaded: false
+    isLoaded: false,
   };
+
+likeButton = (event) => {
+    event.preventDefault()
+      let id = this.props.match.params.id;
+      if (!this.props.match.params.id) {
+        id = "1af0jruup5gu";
+      }
+   
+    axios({
+      method: "put",
+      url: this.props.urlHandler("videos/" + id + "/like"),
+      headers: {
+        "content-type": "application/json"
+      },
+      data: {
+        id: id
+      }
+    })
+      .then(request => {
+        this.setState({mainVideo: request.data})
+      })
+      .catch(err => console.log(err));
+  }
+
+
+
+
 
   getVideos = id => {
     if (!id) {
@@ -79,6 +106,7 @@ class Master extends React.Component {
             urlHandler={urlHandler}
             match={match}
             getVideos={this.getVideos}
+            likeButton={this.likeButton}
           />
         </>
       );

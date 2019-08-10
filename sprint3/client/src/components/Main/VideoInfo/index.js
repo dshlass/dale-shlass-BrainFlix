@@ -1,18 +1,43 @@
 import React from 'react';
-import likes from '../../../assets/Icons/SVG/Icon-likes.svg';
+// import likes from '../../../assets/Icons/SVG/Icon-likes.svg';
 import views from '../../../assets/Icons/SVG/Icon-views.svg';
 
 class VideoInfo extends React.Component {
 
+  state= {
+    isLoaded: false
+  }
+
+  componentDidMount() {
+    this.setState({
+      video: this.props.currentVideo,
+      isLoaded: true
+    })
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.currentVideo !== prevProps.currentVideo) {
+    this.setState({video: this.props.currentVideo})    
+    } 
+  }
+  
   render() {
-    
     //Props received from App.js and set to video for ease of use
-    const video = this.props.currentVideo;
-    
+    const { video, isLoaded} = this.state;
+
     const convertTimestamp = (input) => {
       let date = new Date(input.timestamp)
       return `${date.getMonth()}/${date.getDate()}/${date.getFullYear()}`
     }
+
+    if (!isLoaded) {
+      return (
+        <>
+          <h1 className="loading-error">Loading...</h1>
+          <div className="loader" />
+        </>
+      );
+    } else
 
     return (
       <>
@@ -25,7 +50,7 @@ class VideoInfo extends React.Component {
           <div className='video-info__like-view'> {/**Start of video likes and views wrapper */}
             <img className='video-info__logo' src={views} alt='An eye used to indicate the number of views'/> 
             <p className='video-info__views'>{video.views}</p>
-            <img className='video-info__logo' src={likes} alt='A heart used to indicate the number of likes'/>
+            <button className='video-info__logo video-info__likeButton' onClick={this.props.likeButton}></button>
             <p className='video-info__likes'>{video.likes}</p>
           </div> {/**End of video likes and views wrapper */}
         </div> {/**End of video info wrapper */}

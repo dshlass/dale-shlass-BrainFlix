@@ -30,7 +30,7 @@ class Main extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (this.props.mainVideo.title !== prevProps.mainVideo.title) {
+    if (this.props.mainVideo.title !== prevProps.mainVideo.title || this.props.mainVideo.likes !== prevProps.mainVideo.likes) {
       let sortedComments = this.props.mainVideo.comments;
       this.sortFunction(sortedComments);
       this.setState({
@@ -56,7 +56,11 @@ class Main extends React.Component {
              *VideoInfo Component
              * Passing down data from App.js to generate the current video information
              */}
-            <VideoInfo currentVideo={mainVideo} />
+            <VideoInfo 
+              currentVideo={mainVideo} 
+              match={match}
+              likeButton={this.props.likeButton}
+            />
             {/**
              *Comments Component
              * Receives functions from App.js to:

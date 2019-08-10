@@ -7,7 +7,6 @@ const cors = require('cors')
 app.use(express.json());
 app.use(express.urlencoded({exended:true}));
 
-// let videoId = mainVideo.map(video => video.id);
 app.use(cors());
 
 app.use('/videos', videoRoutes)
