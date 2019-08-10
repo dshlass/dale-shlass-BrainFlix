@@ -20,8 +20,12 @@ class PostedComment extends React.Component {
     }
   };
 
-  handleHover = () => {
-    this.setState({ hover: !this.state.hover });
+  hoverEnter = () => {
+    this.setState({ hover: true });
+  };
+
+  hoverLeave = () => {
+    this.setState({ hover: false});
   };
 
   //Generates the dynamic times of each post.
@@ -112,8 +116,8 @@ class PostedComment extends React.Component {
     return (
       <div
         className="comments__posted-comment"
-        onMouseEnter={this.handleHover}
-        onMouseLeave={this.handleHover}
+        onMouseEnter={this.hoverEnter}
+        onMouseLeave={this.hoverLeave}
         id={id}
       >
         <div className="comments__img">

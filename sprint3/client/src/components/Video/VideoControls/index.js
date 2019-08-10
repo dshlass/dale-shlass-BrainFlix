@@ -3,11 +3,25 @@ import React from 'react';
 class VideoControls extends React.Component {
   
   
-  handleVolumeControl() {
-    
-  }
+  state = { hover: false };
 
-  
+  volumeSlider = props => {
+    if (!this.state.hover) {
+      return <input className='controls__volume-slider-hide' orient='vertical' type="range" min='0' max='100' />
+     } 
+    else {
+      return <input className='controls__volume-slider-show' orient='vertical' type="range" min='0' max='100' onChange={this.props.handleSlider}/>
+    }
+  };
+
+  hoverEnter = () => {
+    this.setState({ hover: true });
+  };
+
+  hoverLeave = () => {
+    this.setState({ hover: false});
+  };
+
 
 
 
@@ -28,7 +42,24 @@ class VideoControls extends React.Component {
         </div> {/**End of progress bar */}
         <div className='controls__screen-vol'> {/**Start of full-screen and volume button wrapper */}
           <button className='controls__fullscreen' aria-label='Fullscreen button' onClick={this.props.fullSreen}></button>
-          <button className='controls__volume' aria-label='Volume button' onClick={this.props.muteButton}></button>
+            <div>
+              
+              <button className='controls__volume' 
+                      aria-label='Volume button' 
+                      onClick={this.props.muteButton} 
+                      onMouseEnter={this.hoverEnter} 
+                      onMouseLeave={this.hoverLeave}>
+                        {/* <input className='controls__volume-slider' 
+                                orient='vertical'
+                                type="range" 
+                                min='0' 
+                                max='100' 
+                        >
+                        </input> */
+                        this.volumeSlider(this.props)
+                        }
+              </button>
+            </div>
         </div> {/**End of full-screen and volume button wrapper */}
       </div>
     );

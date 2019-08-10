@@ -56,6 +56,17 @@ handleProgress = (event) => {
     let percentage = (event.target.currentTime/event.target.duration);
     
     this.setState({currentTime: roundedTime, percentage: percentage})
+}
+
+handleSlider = (event) => {
+  let targetVolume = event.target.value 
+
+  let video = event.target.parentElement.parentElement.parentElement.parentElement.parentElement.childNodes[0]
+  
+    video.volume= (targetVolume/100);
+
+
+
 
 }
 
@@ -102,6 +113,7 @@ if (!isLoaded) {
           playButton={this.playButton}
           muteButton={this.handleMute}
           fullSreen={this.handleFullscreen}
+          handleSlider={this.handleSlider}
         />
 
       </div>
