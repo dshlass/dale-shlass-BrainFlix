@@ -9,16 +9,13 @@ class Video extends React.Component {
 
   state = {
     isLoaded: false,
-    play: false
+    play: false,
+    mute: false
   }
 
 playButton = (event) => {
     event.target.parentElement.parentElement.childNodes[0].play()
-
-    let durationInVideo = event.target.duration
-    let roundedDuration = (Math.floor(durationInVideo))
-
-    this.setState({play: !this.state.play, duration: roundedDuration})
+    this.setState({play: !this.state.play})
 
   if (this.state.play) {
       event.target.parentElement.parentElement.childNodes[0].pause()
@@ -26,7 +23,20 @@ playButton = (event) => {
 }
 
 handleMute = (event) => {
+  let target = event.target.parentElement.parentElement.parentElement.childNodes[0]
+  target.volume=0;
+}
+handleFullscreen = (event) => {
+  let target = event.target.parentElement.parentElement.parentElement.childNodes[0]
+    target.requestFullscreen()
+}
 
+
+
+onPlay = (event) => {
+  let durationInVideo = event.target.duration
+  let roundedDuration = (Math.floor(durationInVideo))
+  this.setState({duration: roundedDuration})
 }
 
 playVideo= (event) => {
@@ -79,12 +89,21 @@ if (!isLoaded) {
                 poster={poster} 
                 onClick={this.playVideo} 
                 onTimeUpdate={this.handleProgress}
+                onPlay={this.onPlay}
         >
               <source src={`${video}?api_key=dale`}
             type="video/mp4"></source>
             Sorry, your browser doesn't support embedded videos.
         </video>
-        <VideoControls duration={duration} currentTime={this.state.currentTime} percentage={percentage} playButton={this.playButton}/>
+        <VideoControls 
+          duration={duration} 
+          currentTime={this.state.currentTime} 
+          percentage={percentage} 
+          playButton={this.playButton}
+          muteButton={this.handleMute}
+          fullSreen={this.handleFullscreen}
+        />
+
       </div>
     );
   }
