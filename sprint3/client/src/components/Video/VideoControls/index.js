@@ -10,7 +10,7 @@ class VideoControls extends React.Component {
       return <input className='controls__volume-slider-hide' orient='vertical' type="range" min='0' max='100' />
      } 
     else {
-      return <input className='controls__volume-slider-show' orient='vertical' type="range" min='0' max='100' onChange={this.props.handleSlider}/>
+      return <input className='controls__volume-slider-show' orient='vertical' type="range" min='0' max='100' onChange={props.handleSlider}/>
     }
   };
 
@@ -21,9 +21,6 @@ class VideoControls extends React.Component {
   hoverLeave = () => {
     this.setState({ hover: false});
   };
-
-
-
 
   handleTimes() {
     if (this.props.currentTime < 10) {
@@ -49,14 +46,8 @@ class VideoControls extends React.Component {
                       onClick={this.props.muteButton} 
                       onMouseEnter={this.hoverEnter} 
                       onMouseLeave={this.hoverLeave}>
-                        {/* <input className='controls__volume-slider' 
-                                orient='vertical'
-                                type="range" 
-                                min='0' 
-                                max='100' 
-                        >
-                        </input> */
-                        this.volumeSlider(this.props)
+                        {
+                          this.volumeSlider(this.props)
                         }
               </button>
             </div>

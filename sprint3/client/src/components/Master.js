@@ -95,7 +95,7 @@ likeButton = (event) => {
         <>
           <Navigation />
 
-          <Video poster={mainVideo.image} duration={mainVideo.duration} video={mainVideo.video} />
+          <Video mainVideo={mainVideo} match={match} getVideos={this.getVideos}/>
 
           <Main
             mainVideo={mainVideo}

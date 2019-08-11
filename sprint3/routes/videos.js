@@ -1,5 +1,6 @@
 const express = require('express')
 const router = express.Router()
+const uuid = require('uuid/v1')
 
 //Video array
 const mainVideo = require("../data/videos.json");
@@ -71,14 +72,22 @@ router.put("/:id/like", (req, res, next) => {
         let arrayToString = stringToArray.join('');
         matchingVideo.likes = arrayToString 
         }
+        if (i===0) {
+          matchingVideo.likes = intToString 
+
+        }
       }
     }
-    else if (pos != 0) {
+    else if (pos != 0 && pos>2) {
       stringToArray.splice(pos,0,',')
       stringToArray.join()
       let arrayToString = stringToArray.join('');
       matchingVideo.likes = arrayToString 
     }
+      else if (pos === 1 || pos === 2) {
+      matchingVideo.likes = intToString 
+    }
+    
 
     res.status(200).json(matchingVideo);
   }
@@ -93,10 +102,19 @@ router.post("/:id/comments", (req, res, next) => {
     let matchingVideo = mainVideo.find(video => {
       return video.id === req.params.id;
     });
+
+    let newId = uuid();
+
+		let newComment= {
+				...data, 
+				id: newId, 
+				timestamp: new Date(),
+        likes: 0
+		}
+
+    matchingVideo.comments.unshift(newComment)
     
-    matchingVideo.comments.unshift(req.body)
-    
-    res.status(200).send(data);
+    res.status(200).send(newComment);
   }
 });
 

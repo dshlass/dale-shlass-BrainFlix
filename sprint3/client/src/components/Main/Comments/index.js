@@ -3,7 +3,6 @@ import Button from "../../Reusable/Button";
 import PostedComment from "./PostedComment";
 import Profile from "../../Reusable/Profile";
 import axios from "axios";
-import uuid from "uuid/v1";
 
 class Comments extends React.Component {
   state = {
@@ -50,10 +49,7 @@ class Comments extends React.Component {
 
     let body = {
       name: `Dale`,
-      comment: comment,
-      id: uuid(),
-      likes: 0,
-      timestamp: new Date() 
+      comment: comment
     }
 
     axios({
