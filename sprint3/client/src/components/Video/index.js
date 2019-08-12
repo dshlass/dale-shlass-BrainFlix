@@ -12,6 +12,7 @@ class Video extends React.Component {
     videoElement: 'video__media'
   }
 
+  //Plays/pauses the video
   playButton = (event) => {
       event.target.parentElement.parentElement.childNodes[0].play()
       this.setState({play: !this.state.play})
@@ -20,30 +21,27 @@ class Video extends React.Component {
         event.target.parentElement.parentElement.childNodes[0].pause()
     }
   }
-
-  handleMute = (event) => {
-    let target = event.target.parentElement.parentElement.parentElement.childNodes[0]
-    target.volume = 0;
-  }
-
-
+  
+  //sets the media styles back to default (for the escape key exiting fullscreen)
   handleEscKey = () => {
     if (!document.fullscreenElement && !document.webkitIsFullScreen && !document.mozFullScreen && !document.msFullscreenElement) {
-        this.setState({ 
+      this.setState({ 
         videoWrapper: 'video',
         videoElement: 'video__media'
       })
     }
-     else  this.setState({ 
-        videoWrapper: 'full-screen',
-        videoElement: 'full-screen__media'
-      })
+    else this.setState({ 
+      videoWrapper: 'full-screen',
+      videoElement: 'full-screen__media'
+    })
   }
 
+  //Handles the fullscreen of the video
   handleFullscreen = (event) => {
 
     let videoContainer = event.target.parentElement.parentElement.parentElement
     
+    //When the browser exits using the escape key, set the styling of the media to defaults
     document.addEventListener('fullscreenchange', this.handleEscKey);
     document.addEventListener('webkitfullscreenchange', this.handleEscKey);
     document.addEventListener('mozfullscreenchange', this.handleEscKey);
@@ -56,16 +54,25 @@ class Video extends React.Component {
     }
   }
 
+  //reloads the video
+  loadVideo() {
+    let video = document.querySelector('.video__media')
+    video.load()
+  }
+
+  //reloads the video when it ends
   onEnded = () => {
     this.loadVideo()
   }
 
+  //gets the video duration for the video controls
   onPlay = (event) => {
     let durationInVideo = event.target.duration
     let roundedDuration = (Math.floor(durationInVideo))
     this.setState({duration: roundedDuration})
   }
 
+  //allows for the user to click on the video for it to play rather than just the play button
   playVideo= (event) => {
     event.target.play()
 
@@ -76,6 +83,10 @@ class Video extends React.Component {
     }
   }
 
+  /**
+   * gets the current time in the video for the controls
+   * also sends the percentage of the current time/video duration for the progress bar
+   */
   handleProgress = (event) => {
       let timeInVideo = event.target.currentTime
       let roundedTime = (Math.floor(timeInVideo))
@@ -85,6 +96,7 @@ class Video extends React.Component {
       this.setState({currentTime: roundedTime, percentage: percentage})
   }
 
+  //Controls the volume with the slider that displays when you hover over the volume button
   handleSlider = (event) => {
     let targetVolume = event.target.value 
     let video = event.target.parentElement.parentElement.parentElement.parentElement.parentElement.childNodes[0]
@@ -100,11 +112,12 @@ class Video extends React.Component {
     })
   }
 
-  loadVideo() {
-    let video = document.querySelector('.video__media')
-    video.load()
+  //updates the duration of the video
+  durationUpdate = () => {
+    return !this.state.duration ? this.state.mainVideo.duration : this.state.duration
   }
 
+  //updates the and reloads the video
   componentDidUpdate(prevProps) {
     if (this.props.mainVideo.duration!== prevProps.mainVideo.duration) {
         let video = document.querySelector('.video__media')
@@ -112,10 +125,6 @@ class Video extends React.Component {
         this.setState({duration: this.props.mainVideo.duration, percentage: 0, play: false })
     }
   }
-
-durationUpdate = () => {
-  return !this.state.duration ? this.state.mainVideo.duration : this.state.duration
-}
 
   render() {
 
@@ -132,11 +141,11 @@ durationUpdate = () => {
     return (
       <div className={videoWrapper}>
         <video className={videoElement} 
-                poster={this.props.mainVideo.image}  //YES
+                poster={this.props.mainVideo.image}
                 onClick={this.playVideo} 
                 onTimeUpdate={this.handleProgress}
                 onPlay={this.onPlay}
-                // onEnded={this.onEnded}
+                onEnded={this.onEnded}
         >
           <source src={`${this.props.mainVideo.video}?api_key=dale`}type="video/mp4"></source>
             Sorry, your browser doesn't support embedded videos.
@@ -146,7 +155,6 @@ durationUpdate = () => {
           currentTime={this.state.currentTime} 
           percentage={percentage} 
           playButton={this.playButton}
-          muteButton={this.handleMute}
           fullSreen={this.handleFullscreen}
           handleSlider={this.handleSlider}
         />
