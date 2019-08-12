@@ -18,7 +18,6 @@ function addComma(location, stringToArray) {
   return arrayToString = stringToArray.join('');
 }
 
-
 //deleted the matching comment with the comment id requested
 router.delete("/:id/comments/:commentid", (req, res, next) => {
 
@@ -169,6 +168,5 @@ router.use("/:id",  (req, res,next) => {
 router.use("/", (req, res, next) => {
   res.status(200).json(mainVideo);
 });
-
 
 module.exports = router
