@@ -5,34 +5,38 @@ import Main from "./Main";
 import axios from "axios";
 
 class Master extends React.Component {
+  
   state = {
-    isLoaded: false,
+    isLoaded: false
   };
 
+//Handles the like button on the Main video
 likeButton = (event) => {
-    event.preventDefault()
-      let id = this.props.match.params.id;
-      if (!this.props.match.params.id) {
-        id = "1af0jruup5gu";
-      }
-   
-    axios({
-      method: "put",
-      url: this.props.urlHandler("videos/" + id + "/like"),
-      headers: {
-        "content-type": "application/json"
-      },
-      data: {
-        id: id
-      }
-    })
-      .then(request => {
-        this.setState({mainVideo: request.data})
-      })
-      .catch(err => console.log(err));
+  event.preventDefault()
+  
+  let id = this.props.match.params.id;
+  if (!this.props.match.params.id) {
+    id = "1af0jruup5gu";
   }
 
+  axios({
+    method: "put",
+    url: this.props.urlHandler("videos/" + id + "/like"),
+    headers: {
+      "content-type": "application/json"
+    },
+    data: {
+      id: id
+    }
+  })
+    .then(request => this.setState({mainVideo: request.data}))
+    .catch(err => console.log(err));
+  }
+
+  //Request for the video list
   getVideos = id => {
+    
+    //handles the logo click
     if (!id) {
       id = "1af0jruup5gu";
     }
@@ -55,14 +59,12 @@ likeButton = (event) => {
       });
   };
 
+  //Gets the default video when mounted
   componentDidMount() {
-    if (this.props.match.params.id) {
-      this.getVideos(this.props.match.params.id);
-    } else {
-      this.getVideos("1af0jruup5gu");
-    }
+    this.getVideos("1af0jruup5gu");
   }
-
+  
+  //Gets the new video when another video is selected
   componentDidUpdate(prevProps) {
     if (this.props.match.params.id !== prevProps.match.params.id) {
       this.getVideos(this.props.match.params.id);
@@ -95,7 +97,7 @@ likeButton = (event) => {
         <>
           <Navigation />
 
-          <Video mainVideo={mainVideo} match={match} getVideos={this.getVideos}/>
+          <Video mainVideo={mainVideo}/>
 
           <Main
             mainVideo={mainVideo}

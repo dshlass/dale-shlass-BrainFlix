@@ -56,25 +56,19 @@ class Video extends React.Component {
     }
   }
 
-  handleEscKey() {
-        this.setState({
-        videoWrapper: 'video',
-        videoElement: 'video__media'
-      })
+  onEnded = () => {
+    this.loadVideo()
   }
 
   onPlay = (event) => {
     let durationInVideo = event.target.duration
     let roundedDuration = (Math.floor(durationInVideo))
     this.setState({duration: roundedDuration})
-
-
-
   }
 
   playVideo= (event) => {
     event.target.play()
-    
+
     this.setState({play: !this.state.play})
 
     if (this.state.play) {
@@ -84,11 +78,10 @@ class Video extends React.Component {
 
   handleProgress = (event) => {
       let timeInVideo = event.target.currentTime
-      
       let roundedTime = (Math.floor(timeInVideo))
 
       let percentage = (event.target.currentTime/event.target.duration);
-      
+
       this.setState({currentTime: roundedTime, percentage: percentage})
   }
 
@@ -107,20 +100,26 @@ class Video extends React.Component {
     })
   }
 
-// handleChange = () => {
-//   let video = document.querySelector('.video__media')
-//   video.load()
-// }
+  loadVideo() {
+    let video = document.querySelector('.video__media')
+    video.load()
+  }
 
-// componentDidUpdate(prevProps) {
-//   if (this.props.match.params.id !== prevProps.match.params.id) {
-//   this.handleChange()  
-// }
-// }
+  componentDidUpdate(prevProps) {
+    if (this.props.mainVideo.duration!== prevProps.mainVideo.duration) {
+        let video = document.querySelector('.video__media')
+        video.load()
+        this.setState({duration: this.props.mainVideo.duration, percentage: 0, play: false })
+    }
+  }
+
+durationUpdate = () => {
+  return !this.state.duration ? this.state.mainVideo.duration : this.state.duration
+}
 
   render() {
 
-    const {isLoaded, percentage, mainVideo, videoElement, videoWrapper} = this.state
+    const {isLoaded, percentage, videoElement, videoWrapper} = this.state
 
     if (!isLoaded) {
       return (
@@ -137,13 +136,13 @@ class Video extends React.Component {
                 onClick={this.playVideo} 
                 onTimeUpdate={this.handleProgress}
                 onPlay={this.onPlay}
-                onKeyDown={this.handleEscKey}
+                // onEnded={this.onEnded}
         >
           <source src={`${this.props.mainVideo.video}?api_key=dale`}type="video/mp4"></source>
             Sorry, your browser doesn't support embedded videos.
         </video>
         <VideoControls 
-          duration={mainVideo.duration} 
+          duration={this.durationUpdate()} 
           currentTime={this.state.currentTime} 
           percentage={percentage} 
           playButton={this.playButton}

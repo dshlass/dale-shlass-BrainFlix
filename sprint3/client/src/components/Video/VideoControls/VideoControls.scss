@@ -64,6 +64,7 @@
 
   &__volume-control {
     display: flex;
+    flex-direction: column;
   }
 
   &__volume {
@@ -85,22 +86,18 @@
   }
 
   &__volume-slider-show {
-    -webkit-appearance: none;
+    -webkit-appearance: slider-vertical;
     opacity: 1;
     position: absolute;
     bottom: 32px;
-    left: -40px;
+    left: -45px;
     height: 50px;
     outline: none;
     background: rgba(0,0,0,0.4);
-    -webkit-appearance: slider-vertical;  
     }
 
     &__volume-slider-hide {
     opacity: 0;
-    position: absolute;
-    bottom: 32px;
-    left: 10px;
   }
 
   &__progress {
