@@ -6,9 +6,10 @@ import Button from "../../../Reusable/Button";
 class PostedComment extends React.Component {
   state = { hover: false };
 
+  //changes classname of the button when hover state changes
   deleteButton = props => {
     if (!this.state.hover) {
-      return <Button class={"buttons content__delete"} display={"Delete"} />;
+      return <Button class={"buttons content__delete"} display={"Delete"} click={props.handleDelete} />;
     } else {
       return (
         <Button
@@ -19,11 +20,13 @@ class PostedComment extends React.Component {
       );
     }
   };
-
+  
+  //when mouse entes the parent
   hoverEnter = () => {
     this.setState({ hover: true });
   };
 
+  //when mouse leaves the parent
   hoverLeave = () => {
     this.setState({ hover: false});
   };
@@ -114,8 +117,7 @@ class PostedComment extends React.Component {
     const { name, date, comment, likes, id } = this.props;
 
     return (
-      <div
-        className="comments__posted-comment"
+      <div className="comments__posted-comment"
         onMouseEnter={this.hoverEnter}
         onMouseLeave={this.hoverLeave}
         id={id}
@@ -146,7 +148,9 @@ class PostedComment extends React.Component {
               click={this.props.putLike}
             />
             <p className="content__like-counter">{likes}</p>
-            {this.deleteButton(this.props)}
+            {
+              this.deleteButton(this.props)
+            }
           </div>
         </div>
       </div>

@@ -9,9 +9,10 @@ class Comments extends React.Component {
     value: "",
   };
 
-  commentController = props => {
+  //Controls the display on the comment section if there are no comments
+  commentController = (props) => {
     if (!props.commentsArray.length) {
-      return(<p className="content__username">Please add a new comment</p>)
+      return(<p className="content__no-comment">Please add a new comment</p>)
     } else {
       return (props.commentsArray.map(comment => (
         <PostedComment
@@ -28,11 +29,13 @@ class Comments extends React.Component {
     }
   };
 
-  handleChange = event => {
+  //Sets the state of the value as you type in a comment
+  handleChange = (event) => {
     this.setState({ value: event.target.value });
   };
 
-  handleSubmit = event => {
+  //ensures empty comments are not submitted
+  handleSubmit = (event) => {
     event.preventDefault();
     if (this.state.value === "") {
       alert("You must submit a comment");
@@ -41,8 +44,11 @@ class Comments extends React.Component {
     }
   };
   
-  postComment = comment => {
+  //posts a new comment
+  postComment = (comment) => {
+    
     let id = this.props.match.params.id;
+    
     if (!this.props.match.params.id) {
       id = "1af0jruup5gu";
     }
@@ -67,12 +73,15 @@ class Comments extends React.Component {
     })
     .then(this.setState({ value: "" }))
     .catch(err => console.log(err));
-  };
+  }
+  //end of the postComment function
 
-  handleDelete = event => {
+  //deletes a comment
+  handleDelete = (event) => {
     event.preventDefault();
 
     let id = this.props.match.params.id;
+    
     if (!this.props.match.params.id) {
       id = "1af0jruup5gu";
     }
@@ -92,9 +101,11 @@ class Comments extends React.Component {
         this.props.getVideos(this.props.match.params.id)
       })
       .catch(err => console.log(err));
-  };
+  }
+  //end of the deleteComment function
 
-  putLike = event => {
+  //Puts a like on the comment
+  putLike = (event) => {
     event.preventDefault();
 
     let id = this.props.match.params.id;
@@ -113,15 +124,14 @@ class Comments extends React.Component {
 
     this.props.commentsArray[pos].likes = parseInt(targetLike.innerHTML);
 
-    axios
-      .put(this.props.urlHandler("videos/" + id + "/comments/" + targetId))
-      .then(req => {
-        if (req) {
-          this.setState({ commentsArray: this.props.commentsArray });
-        }
-      })
-      .catch(err => console.log(err));
-  };
+    axios.put(this.props.urlHandler("videos/" + id + "/comments/" + targetId))
+    .then(req => {
+      if (req) {
+        this.setState({ commentsArray: this.props.commentsArray });
+      }
+    }).catch(err => console.log(err));
+  }
+  //end of the putLike function
 
   componentDidUpdate(prevProps) {
     if (this.props.match.params.id !== prevProps.match.params.id && this.props.match.params.id) {
@@ -130,7 +140,6 @@ class Comments extends React.Component {
   }
 
   render() {
-    // const { commentsArray } = this.props;
     return (
       <section className="section--comments">
         <div className="comments">
@@ -165,18 +174,6 @@ class Comments extends React.Component {
           <div className="comments--posted">
             {
               /**This generates the list of comments associated with the current video */
-              // commentsArray.map(comment => (
-              //   <PostedComment
-              //     key={comment.id}
-              //     handleDelete={this.handleDelete}
-              //     name={comment.name}
-              //     date={comment.timestamp}
-              //     comment={comment.comment}
-              //     likes={comment.likes}
-              //     id={comment.id}
-              //     putLike={this.putLike}
-              //   />
-              // ))
               this.commentController(this.props)
             }
           </div>

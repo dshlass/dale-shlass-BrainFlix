@@ -32,7 +32,8 @@ likeButton = (event) => {
     .then(request => this.setState({mainVideo: request.data}))
     .catch(err => console.log(err));
   }
-
+  //end of likeButton function
+  
   //Request for the video list
   getVideos = id => {
     
@@ -57,7 +58,8 @@ likeButton = (event) => {
           error
         });
       });
-  };
+  }
+  //end of getVideo function
 
   //Gets the default video when mounted
   componentDidMount() {

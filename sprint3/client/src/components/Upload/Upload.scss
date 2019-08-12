@@ -5,16 +5,13 @@
 
   &__header {
     @extend %header-section;
-
     margin-top: 2.4rem;
     padding-bottom: 3.2rem;
 
     @media #{$Tablet} {
       margin-top: 4.8rem;
       margin-bottom: 4rem;
-
       border-bottom: 1px solid $field-border;
-
     }
   }
 
@@ -33,15 +30,14 @@
     &--image {
       max-width: 34.4rem;
       margin-bottom: 3.2rem;
-       
-       @media #{$Tablet} {
+      
+      @media #{$Tablet} {
         margin-bottom: 4rem;
       }
 
       @media #{$Desktop} {
         margin-right: 2.4rem;
       }
-
     }
 
     &--input {
@@ -61,7 +57,7 @@
       }
     }
   }
-    //End of the wrapper element
+  //End of the wrapper element
 
   &__image {
     border-radius: 5px;
@@ -99,7 +95,6 @@
     &:focus {
       border: 3px solid $primary-cta;;
     }
- 
   }
 
   &__textarea {
@@ -130,16 +125,13 @@
     &:focus {
       border: 3px solid $primary-cta;;
     }
-
-    }
-
+  }
 
   &__cancel {
     @extend %buttons;
     color: $primary-cta;
     background: white;
     margin-bottom: 2.4rem;
-
 
     @media #{$Tablet} {
       width: 16rem; 
@@ -169,8 +161,4 @@
       background: $primary-cta-hover;
     }
   }
-
-
-
-
 }

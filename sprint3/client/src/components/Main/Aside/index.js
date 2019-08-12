@@ -7,25 +7,27 @@ class Aside extends React.Component {
     isLoaded: false
   };
 
-  getsideVideos = () => {
-    axios
-      .get(this.props.urlHandler("videos"))
-      .then(result => {
-        if (result.status === 200) {
-          this.setState({
-            isLoaded: true,
-            sideVideos: result.data
-          });
-        }
-      })
-      .catch(error =>
+  //request for the side videos array
+  getSideVideos = () => {
+    axios.get(this.props.urlHandler("videos"))
+    .then(result => {
+      if (result.status === 200) {
         this.setState({
           isLoaded: true,
-          error
-        })
-      );
-  };
+          sideVideos: result.data
+        });
+      }
+    })
+    .catch(error =>
+      this.setState({
+        isLoaded: true,
+        error
+      })
+    );
+  }
+  //end of the getSideVideos function
 
+  //Filters the matching video out of the sideVideo array each time the url changes
   sideVideoToDisplay() {
     if (this.props.match.params.id) {
       return this.state.sideVideos.filter(videos => {
@@ -37,8 +39,9 @@ class Aside extends React.Component {
       });
   }
 
+  //only makes a single call to the server once the component mounts
   componentDidMount() {
-    this.getsideVideos();
+    this.getSideVideos();
   }
 
   render() {

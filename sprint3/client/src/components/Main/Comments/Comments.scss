@@ -9,7 +9,6 @@
 
 //Comment component speicific styling
 .comments {
-
   max-width: 100%;
 
   &__flex {
@@ -164,7 +163,6 @@
 
   &__date {
     @extend %paragraph-regular;
-    // margin-left: auto;
     color: $text-label-fill;
 
     @media #{$Tablet} {
@@ -230,28 +228,22 @@
     @extend %paragraph-regular;
     padding: 5px 10px;
     margin-right: auto;
-
   }
-
-
-
-
+  
   &__comment {
     @extend %paragraph-regular;
     color: $paragraph-text;
-    // overflow-wrap: break-word;
-    // overflow-wrap: anywhere;
-    // word-break: break-all;
-    // width: 150px;
 
     @media #{$Tablet} {
       max-width: 62.4rem;
     }
+  }
 
-    @media #{$Tablet} {
-      // max-width: 62.4rem;
-    }
-
+  &__no-comment {
+    @extend %header-sub;
+    color: $paragraph-text;
+    margin-top: 3.6rem;
+    text-align: center;
   }
 } //End of Content component
 

@@ -8,6 +8,7 @@ class Main extends React.Component {
     isLoaded: false
   };
 
+  //function to sort the comments
   sortFunction(input) {
     input.sort((a, b) => {
       if (a.timestamp === b.timestamp) {
@@ -18,6 +19,7 @@ class Main extends React.Component {
     });
   }
 
+  //setting the state of the component once the props are received
   componentDidMount() {
     let sortedComments = this.props.mainVideo.comments;
     this.sortFunction(sortedComments);
@@ -29,6 +31,7 @@ class Main extends React.Component {
     });
   }
 
+  //re-renders the page if the title of the video or the number of likes changes
   componentDidUpdate(prevProps) {
     if (this.props.mainVideo.title !== prevProps.mainVideo.title || this.props.mainVideo.likes !== prevProps.mainVideo.likes) {
       let sortedComments = this.props.mainVideo.comments;
@@ -50,38 +53,22 @@ class Main extends React.Component {
     } else
       return (
         <main className="main">
-          <section className="section">
-            {/**This section contains the current video's info and the generated comments */}
-            {/**
-             *VideoInfo Component
-             * Passing down data from App.js to generate the current video information
-             */}
+          <section className="section"> {/**Start of the section containing VideoInfo and Comments */}
+
             <VideoInfo 
               currentVideo={mainVideo} 
-              match={match}
               likeButton={this.props.likeButton}
             />
-            {/**
-             *Comments Component
-             * Receives functions from App.js to:
-             * handle text changes inside input and
-             * submit button
-             * Passing down data from App.js to generate the comment section
-             */}
+
             <Comments
               mainVideo={mainVideo}
               commentsArray={sortedComments}
               match={match}
               urlHandler={urlHandler}
               getVideos={this.props.getVideos}
-
-              // handleDelete={handleDelete}
             />
-            {/**
-             *Aside Component
-             * Passing down data from App.js to generate the list of next videos
-             */}
-          </section>
+          </section> {/**End of the section containing VideoInfo and Comments */}
+
           <Aside
             urlHandler={urlHandler}
             mainVideo={mainVideo}
